@@ -74,7 +74,7 @@ export default function Home() {
             className="relative w-full aspect-square object-cover rounded-3xl border-4 border-white shadow-lg"
             alt="Müzayede Ürünü"
           />
-          <div className="mt-4 text-center italic opacity-80 text-sm">
+          <div className="mt-4 text-center italic opacity-80 text-sm font-serif">
             “El işçiliği ile hayat bulan nadide bir eser.”
           </div>
         </div>
@@ -87,7 +87,7 @@ export default function Home() {
             
             <div className="bg-[#fefae0] border-2 border-dashed border-[#d4a373] rounded-3xl p-6 text-center mb-6">
               <span className="text-xs uppercase font-bold tracking-widest opacity-60">Şu Anki En Yüksek Teklif</span>
-              <div className="text-5xl font-black text-[#606c38] my-2">{auction.current_bid} ₺</div>
+              <div className="text-5xl font-black text-[#606c38] my-2 tracking-tighter">{auction.current_bid} ₺</div>
               <div className="flex justify-center items-center gap-2 text-sm italic">
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                 En Son: {auction.last_bidder_name || "İlk teklifi siz verin"}
@@ -133,4 +133,16 @@ export default function Home() {
             Bu proje AB Türkiye Ulusal Ajansı Tarafından desteklenmiştir.
           </p>
           <p className="mb-4">
-            “A Common Language for Integrative Entrepreneurship (
+            “A Common Language for Integrative Entrepreneurship (C-LINE)” başlıklı Erasmus+ KA210-SCH projesi kapsamında geliştirilmiştir.
+          </p>
+          <p className="italic">
+            C-LINE projesi, Türkiye, Letonya ve İtalya'dan kurumlar tarafından yürütülmektedir.
+          </p>
+          <div className="mt-6 pt-6 border-t border-stone-100 flex justify-center gap-8 grayscale opacity-70">
+            <span className="text-[10px] uppercase tracking-tighter">C-LINE © 2026</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
