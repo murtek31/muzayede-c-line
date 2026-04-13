@@ -10,6 +10,7 @@ const supabase = createClient(
 export default function Home() {
   const [auction, setAuction] = useState<any>(null);
   const [form, setForm] = useState({ name: '', phone: '', bid: '' });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -17,37 +18,119 @@ export default function Home() {
       setAuction(data);
     };
     getData();
-    const sub = supabase.channel('auction').on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'auctions' }, 
-      payload => setAuction(payload.new)).subscribe();
+
+    const sub = supabase.channel('auction').on('postgres_changes', { 
+      event: 'UPDATE', 
+      schema: 'public', 
+      table: 'auctions' 
+    }, payload => setAuction(payload.new)).subscribe();
+
     return () => { supabase.removeChannel(sub); };
   }, []);
 
   const submitBid = async (e: any) => {
     e.preventDefault();
-    if (parseFloat(form.bid) <= auction.current_bid) { alert("Daha yüksek teklif verin!"); return; }
-    await supabase.from('auctions').update({ current_bid: form.bid, last_bidder_name: form.name, last_bidder_phone: form.phone }).eq('id', auction.id);
-    alert("Teklif iletildi! 🎨");
-    setForm({ ...form, bid: '' });
+    setLoading(true);
+    const amount = parseFloat(form.bid);
+
+    if (amount <= auction.current_bid) {
+      alert("Lütfen mevcut tekliften daha yüksek bir değer giriniz.");
+      setLoading(false);
+      return;
+    }
+
+    const { error } = await supabase.from('auctions').update({ 
+      current_bid: amount, 
+      last_bidder_name: form.name, 
+      last_bidder_phone: form.phone 
+    }).eq('id', auction.id);
+
+    if (!error) {
+      setForm({ ...form, bid: '' });
+      alert("Teklifiniz başarıyla kaydedildi! 🖌️");
+    }
+    setLoading(false);
   };
 
-  if (!auction) return <div style={{padding: '50px', textAlign: 'center', fontFamily: 'serif'}}>Yükleniyor...</div>;
+  if (!auction) return <div className="flex h-screen items-center justify-center italic text-stone-500 bg-[#fdfcf0]">Antika Sayfa Hazırlanıyor...</div>;
 
   return (
-    <div style={{minHeight: '100vh', backgroundColor: '#fdfcf0', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', fontFamily: 'serif', color: '#5d4037'}}>
-      <div style={{maxWidth: '400px', width: '100%', backgroundColor: 'white', border: '8px solid #d4a373', borderRadius: '40px', padding: '30px', textAlign: 'center'}}>
-        <img src={auction.image_url} style={{width: '100%', borderRadius: '25px', marginBottom: '20px', border: '2px solid #faedcd'}} />
-        <h1 style={{fontSize: '24px', fontWeight: 'bold', marginBottom: '10px'}}>{auction.product_name}</h1>
-        <div style={{backgroundColor: '#fefae0', borderRadius: '20px', padding: '20px', marginBottom: '20px', border: '1px solid #e9edc9'}}>
-          <div style={{fontSize: '40px', fontWeight: '900', color: '#606c38'}}>{auction.current_bid} ₺</div>
-          <p style={{fontSize: '14px', marginTop: '10px'}}>🎨 Lider: {auction.last_bidder_name || 'Henüz Yok'}</p>
+    <div className="min-h-screen bg-[#fdfcf0] text-[#5d4037] font-serif p-4 md:p-8 flex flex-col items-center">
+      
+      {/* Üst Başlık & Estetik */}
+      <header className="text-center mb-10">
+        <h2 className="text-sm tracking-[0.3em] uppercase opacity-60 mb-2">C-LINE Özel Koleksiyon</h2>
+        <h1 className="text-4xl md:text-5xl font-bold italic border-b-2 border-[#d4a373] pb-4 inline-block">Müzayede Salonu</h1>
+      </header>
+
+      {/* Ana Kart */}
+      <main className="max-w-4xl w-full grid md:grid-cols-2 gap-8 bg-white border-[12px] border-[#d4a373] rounded-[3rem] p-6 md:p-10 shadow-[20px_20px_0px_#faedcd]">
+        
+        {/* Sol Kolon: Görsel */}
+        <div className="relative group">
+          <div className="absolute inset-0 bg-[#d4a373] rotate-2 rounded-3xl opacity-20 group-hover:rotate-0 transition-transform"></div>
+          <img 
+            src={auction.image_url} 
+            className="relative w-full aspect-square object-cover rounded-3xl border-4 border-white shadow-lg"
+            alt="Müzayede Ürünü"
+          />
+          <div className="mt-4 text-center italic opacity-80 text-sm">
+            “El işçiliği ile hayat bulan nadide bir eser.”
+          </div>
         </div>
-        <form onSubmit={submitBid} style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
-          <input style={{padding: '15px', borderRadius: '15px', border: '2px solid #faedcd', outline: 'none'}} placeholder="Ad Soyad" required onChange={x => setForm({...form, name: x.target.value})} />
-          <input style={{padding: '15px', borderRadius: '15px', border: '2px solid #faedcd', outline: 'none'}} placeholder="Telefon" required onChange={x => setForm({...form, phone: x.target.value})} />
-          <input style={{padding: '15px', borderRadius: '15px', border: '2px solid #faedcd', outline: 'none', fontSize: '20px', fontWeight: 'bold'}} type="number" placeholder="Teklif (₺)" required value={form.bid} onChange={x => setForm({...form, bid: x.target.value})} />
-          <button style={{padding: '20px', borderRadius: '50px', backgroundColor: '#606c38', color: 'white', fontWeight: 'bold', border: 'none', cursor: 'pointer'}}>TEKLİF VER 🖌️</button>
-        </form>
-      </div>
-    </div>
-  );
-}
+
+        {/* Sağ Kolon: Teklif Paneli */}
+        <div className="flex flex-col justify-between">
+          <div>
+            <h3 className="text-3xl font-bold mb-2">{auction.product_name}</h3>
+            <p className="text-sm leading-relaxed opacity-75 mb-6">{auction.description}</p>
+            
+            <div className="bg-[#fefae0] border-2 border-dashed border-[#d4a373] rounded-3xl p-6 text-center mb-6">
+              <span className="text-xs uppercase font-bold tracking-widest opacity-60">Şu Anki En Yüksek Teklif</span>
+              <div className="text-5xl font-black text-[#606c38] my-2">{auction.current_bid} ₺</div>
+              <div className="flex justify-center items-center gap-2 text-sm italic">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                En Son: {auction.last_bidder_name || "İlk teklifi siz verin"}
+              </div>
+            </div>
+          </div>
+
+          <form onSubmit={submitBid} className="space-y-3">
+            <input 
+              className="w-full p-4 rounded-2xl bg-stone-50 border-2 border-stone-200 focus:border-[#d4a373] outline-none transition-all shadow-inner" 
+              placeholder="Adınız Soyadınız" required value={form.name} onChange={x => setForm({...form, name: x.target.value})} 
+            />
+            <input 
+              className="w-full p-4 rounded-2xl bg-stone-50 border-2 border-stone-200 focus:border-[#d4a373] outline-none transition-all shadow-inner" 
+              placeholder="Telefon Numaranız" type="tel" required value={form.phone} onChange={x => setForm({...form, phone: x.target.value})} 
+            />
+            <div className="relative">
+              <input 
+                className="w-full p-4 pl-10 rounded-2xl bg-stone-50 border-2 border-[#d4a373] focus:ring-4 focus:ring-[#faedcd] outline-none font-bold text-xl transition-all" 
+                placeholder="Teklif Tutarı" type="number" required value={form.bid} onChange={x => setForm({...form, bid: x.target.value})} 
+              />
+              <span className="absolute left-4 top-4 opacity-40">₺</span>
+            </div>
+            
+            <button 
+              disabled={loading}
+              className="w-full bg-[#606c38] hover:bg-[#283618] text-white py-5 rounded-full font-bold text-xl shadow-xl active:scale-95 transition-all disabled:opacity-50"
+            >
+              {loading ? "Mürekkep Kuruyor..." : "TEKLİFİ GÖNDER 🖌️"}
+            </button>
+          </form>
+        </div>
+      </main>
+
+      {/* Alt Bilgi & Erasmus+ Metni */}
+      <footer className="max-w-4xl w-full mt-16 pb-10">
+        <div className="h-[2px] bg-stone-200 w-full mb-8 relative">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#fdfcf0] px-4 italic text-sm opacity-40">Erasmus+ Proje Bilgilendirmesi</div>
+        </div>
+        
+        <div className="bg-white/50 backdrop-blur-sm border border-stone-200 rounded-3xl p-8 text-center text-sm leading-relaxed text-stone-600 shadow-sm">
+          <p className="font-bold text-[#d4a373] mb-4">
+            Bu proje AB Türkiye Ulusal Ajansı Tarafından desteklenmiştir.
+          </p>
+          <p className="mb-4">
+            “A Common Language for Integrative Entrepreneurship (
