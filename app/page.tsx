@@ -9,10 +9,8 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 const T = {
   tr: {
     title: "C-LINE Açık Artırma Evi",
-    subtitle: "Erasmus+ KA210-SCH Projesi",
     auctions: "Açık Artırmalar",
     currentBid: "Güncel Teklif",
-    leader: "Lider",
     bidCount: "teklif",
     yourName: "Adınız Soyadınız",
     yourPhone: "Telefon",
@@ -22,102 +20,68 @@ const T = {
     submitting: "Gönderiliyor...",
     gdpr: "Kişisel verilerimin artırma süreci için kullanılmasına onay veriyorum.",
     notify: "Artırma sonucunda e-posta bildirimi almak istiyorum.",
-    minBid: "Minimum teklif",
     noProducts: "Henüz ürün eklenmemiştir.",
-    successMsg: "Teklifiniz alındı! E-posta adresinize onay gönderildi.",
+    successMsg: "✓ Teklifiniz alındı! E-posta adresinize onay gönderildi.",
     errorMsg: "Hata oluştu. Lütfen tekrar deneyin.",
     minBidError: "Teklifiniz mevcut tekliften yüksek olmalıdır.",
     footer: "C-LINE Projesi Türkiye Ulusal Ajansı tarafından desteklenmiştir.",
     partners: "Proje Ortakları: Türkiye · Letonya · İtalya",
-    status_active: "Canlı",
-    status_upcoming: "Yakında",
-    status_closed: "Kapandı",
-    selectLot: "Teklif vermek için bir lot seçin",
-    lot: "Lot",
+    status_active: "Canlı", status_upcoming: "Yakında", status_closed: "Kapandı",
+    selectLot: "Teklif vermek için bir lot seçin", lot: "Lot",
   },
   en: {
     title: "C-LINE Auction House",
-    subtitle: "Erasmus+ KA210-SCH Project",
     auctions: "Live Auctions",
     currentBid: "Current Bid",
-    leader: "Leader",
     bidCount: "bids",
-    yourName: "Full Name",
-    yourPhone: "Phone",
-    yourEmail: "Email",
-    bidAmount: "Bid Amount (₺)",
-    submitBid: "Place Bid",
-    submitting: "Submitting...",
+    yourName: "Full Name", yourPhone: "Phone", yourEmail: "Email",
+    bidAmount: "Bid Amount (₺)", submitBid: "Place Bid", submitting: "Submitting...",
     gdpr: "I consent to my personal data being used for the auction process.",
     notify: "I want to receive email notifications about this auction.",
-    minBid: "Minimum bid",
     noProducts: "No products added yet.",
-    successMsg: "Your bid has been received! A confirmation email has been sent.",
+    successMsg: "✓ Your bid has been received! A confirmation email has been sent.",
     errorMsg: "An error occurred. Please try again.",
     minBidError: "Your bid must be higher than the current bid.",
     footer: "C-LINE Project is supported by the Turkish National Agency.",
     partners: "Project Partners: Turkey · Latvia · Italy",
-    status_active: "Live",
-    status_upcoming: "Upcoming",
-    status_closed: "Closed",
-    selectLot: "Select a lot to place a bid",
-    lot: "Lot",
+    status_active: "Live", status_upcoming: "Upcoming", status_closed: "Closed",
+    selectLot: "Select a lot to place a bid", lot: "Lot",
   },
   it: {
     title: "C-LINE Casa d'Aste",
-    subtitle: "Progetto Erasmus+ KA210-SCH",
     auctions: "Aste in Corso",
     currentBid: "Offerta Attuale",
-    leader: "Leader",
     bidCount: "offerte",
-    yourName: "Nome e Cognome",
-    yourPhone: "Telefono",
-    yourEmail: "Email",
-    bidAmount: "Importo Offerta (₺)",
-    submitBid: "Fai un'Offerta",
-    submitting: "Invio...",
+    yourName: "Nome e Cognome", yourPhone: "Telefono", yourEmail: "Email",
+    bidAmount: "Importo Offerta (₺)", submitBid: "Fai un'Offerta", submitting: "Invio...",
     gdpr: "Acconsento al trattamento dei miei dati personali per il processo d'asta.",
     notify: "Voglio ricevere notifiche email sull'asta.",
-    minBid: "Offerta minima",
     noProducts: "Nessun prodotto aggiunto.",
-    successMsg: "La tua offerta è stata ricevuta! È stata inviata un'email di conferma.",
+    successMsg: "✓ La tua offerta è stata ricevuta! È stata inviata un'email di conferma.",
     errorMsg: "Si è verificato un errore. Riprova.",
     minBidError: "La tua offerta deve essere superiore all'offerta attuale.",
     footer: "Il Progetto C-LINE è supportato dall'Agenzia Nazionale Turca.",
-    partners: "Partner del Progetto: Turchia · Lettonia · Italia",
-    status_active: "In Corso",
-    status_upcoming: "Prossimamente",
-    status_closed: "Chiusa",
-    selectLot: "Seleziona un lotto per fare un'offerta",
-    lot: "Lotto",
+    partners: "Partner: Turchia · Lettonia · Italia",
+    status_active: "In Corso", status_upcoming: "Prossimamente", status_closed: "Chiusa",
+    selectLot: "Seleziona un lotto per fare un'offerta", lot: "Lotto",
   },
   lt: {
     title: "C-LINE Izsoļu Nams",
-    subtitle: "Erasmus+ KA210-SCH Projekts",
     auctions: "Aktīvās Izsoles",
     currentBid: "Pašreizējā Cena",
-    leader: "Līderis",
     bidCount: "piedāvājumi",
-    yourName: "Vārds Uzvārds",
-    yourPhone: "Tālrunis",
-    yourEmail: "E-pasts",
-    bidAmount: "Solījuma Summa (₺)",
-    submitBid: "Solīt",
-    submitting: "Sūta...",
+    yourName: "Vārds Uzvārds", yourPhone: "Tālrunis", yourEmail: "E-pasts",
+    bidAmount: "Solījuma Summa (₺)", submitBid: "Solīt", submitting: "Sūta...",
     gdpr: "Piekrītu savu personas datu izmantošanai izsoles procesā.",
     notify: "Vēlos saņemt e-pasta paziņojumus par izsoli.",
-    minBid: "Minimālais solījums",
     noProducts: "Vēl nav pievienotu produktu.",
-    successMsg: "Jūsu solījums ir saņemts! Uz e-pastu nosūtīts apstiprinājums.",
+    successMsg: "✓ Jūsu solījums ir saņemts! Uz e-pastu nosūtīts apstiprinājums.",
     errorMsg: "Radās kļūda. Lūdzu, mēģiniet vēlreiz.",
     minBidError: "Jūsu solījumam jābūt augstākam par pašreizējo.",
     footer: "C-LINE projektu atbalsta Turcijas Nacionālā aģentūra.",
     partners: "Projekta partneri: Turcija · Latvija · Itālija",
-    status_active: "Aktīva",
-    status_upcoming: "Drīzumā",
-    status_closed: "Slēgta",
-    selectLot: "Izvēlieties lotu, lai solītu",
-    lot: "Lots",
+    status_active: "Aktīva", status_upcoming: "Drīzumā", status_closed: "Slēgta",
+    selectLot: "Izvēlieties lotu, lai solītu", lot: "Lots",
   },
 };
 
@@ -142,6 +106,24 @@ interface Bid {
   created_at: string;
 }
 
+const C = {
+  orange: "#F4A96A", orangeLight: "#FDE8D4", orangeDark: "#C46A20",
+  teal: "#5BBCB0",   tealLight: "#D4F0ED",   tealDark: "#2A7A72",
+  blue: "#7AACDA",   blueLight: "#D6EBFA",   blueDark: "#2E6A9E",
+  yellow: "#F5D36A", yellowLight: "#FDF5D4", yellowDark: "#8A6800",
+  green: "#8DC98A",  greenLight: "#DFF2DE",  greenDark: "#2E6A2A",
+  bg: "#FDFAF5", bgWarm: "#FEF6EC", ink: "#2D2418",
+  inkLight: "#6B5A47", inkMuted: "#A09080", white: "#FFFFFF", border: "#E8DDD0",
+};
+
+const cardAccents = [
+  { bg: C.orangeLight, dot: C.orange, badge: C.orangeDark, price: C.orangeDark },
+  { bg: C.tealLight,   dot: C.teal,   badge: C.tealDark,   price: C.tealDark },
+  { bg: C.blueLight,   dot: C.blue,   badge: C.blueDark,   price: C.blueDark },
+  { bg: C.yellowLight, dot: C.yellow, badge: C.yellowDark, price: C.yellowDark },
+  { bg: C.greenLight,  dot: C.green,  badge: C.greenDark,  price: C.greenDark },
+];
+
 export default function Home() {
   const [lang, setLang] = useState<Lang>("tr");
   const [products, setProducts] = useState<Product[]>([]);
@@ -152,16 +134,11 @@ export default function Home() {
   const [msg, setMsg] = useState<{ text: string; ok: boolean } | null>(null);
   const t = T[lang];
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  useEffect(() => { fetchProducts(); }, []);
 
   async function fetchProducts() {
     const { data } = await supabase.from("products").select("*").order("created_at");
-    if (data) {
-      setProducts(data);
-      data.forEach((p: Product) => fetchBids(p.id));
-    }
+    if (data) { setProducts(data); data.forEach((p: Product) => fetchBids(p.id)); }
   }
 
   async function fetchBids(productId: string) {
@@ -169,158 +146,144 @@ export default function Home() {
     if (data) setBids(prev => ({ ...prev, [productId]: data }));
   }
 
-  function getName(p: Product) {
-    return p[`name_${lang}` as keyof Product] as string || p.name_tr;
-  }
-  function getDesc(p: Product) {
-    return p[`description_${lang}` as keyof Product] as string || p.description_tr;
-  }
-
-  function getTopBid(productId: string) {
-    const b = bids[productId];
-    if (!b || b.length === 0) return null;
-    return b[0];
-  }
-
-  function getCurrentAmount(p: Product) {
-    const top = getTopBid(p.id);
-    return top ? top.amount : p.start_bid;
-  }
+  function getName(p: Product) { return p[`name_${lang}` as keyof Product] as string || p.name_tr; }
+  function getDesc(p: Product) { return p[`description_${lang}` as keyof Product] as string || p.description_tr; }
+  function getTopBid(pid: string) { const b = bids[pid]; return (!b || !b.length) ? null : b[0]; }
+  function getCurrentAmount(p: Product) { const top = getTopBid(p.id); return top ? top.amount : p.start_bid; }
 
   async function handleSubmit() {
     if (!selected) return;
-    if (!form.name || !form.phone || !form.email || !form.amount) {
-      setMsg({ text: "Lütfen tüm alanları doldurun.", ok: false });
-      return;
-    }
-    if (!form.gdpr) {
-      setMsg({ text: "KVKK onayı gereklidir.", ok: false });
-      return;
-    }
+    if (!form.name || !form.phone || !form.email || !form.amount) { setMsg({ text: "Lütfen tüm alanları doldurun.", ok: false }); return; }
+    if (!form.gdpr) { setMsg({ text: "KVKK onayı gereklidir.", ok: false }); return; }
     const amt = parseFloat(form.amount);
-    const current = getCurrentAmount(selected);
-    if (amt <= current) {
-      setMsg({ text: t.minBidError, ok: false });
-      return;
-    }
-    setLoading(true);
-    setMsg(null);
+    if (amt <= getCurrentAmount(selected)) { setMsg({ text: t.minBidError, ok: false }); return; }
+    setLoading(true); setMsg(null);
     const { error } = await supabase.from("bids").insert({
-      product_id: selected.id,
-      bidder_name: form.name,
-      bidder_phone: form.phone,
-      bidder_email: form.email,
-      amount: amt,
+      product_id: selected.id, bidder_name: form.name,
+      bidder_phone: form.phone, bidder_email: form.email, amount: amt,
     });
     setLoading(false);
-    if (error) {
-      setMsg({ text: t.errorMsg, ok: false });
-    } else {
+    if (error) { setMsg({ text: t.errorMsg, ok: false }); }
+    else {
       setMsg({ text: t.successMsg, ok: true });
       setForm({ name: "", phone: "", email: "", amount: "", gdpr: false, notify: true });
       fetchBids(selected.id);
     }
   }
 
-  const statusColor: Record<string, string> = {
-    active: "#2C4A3E",
-    upcoming: "#1A1612",
-    closed: "#888",
-  };
-  const statusLabel = (s: string) => {
-    if (s === "active") return t.status_active;
-    if (s === "upcoming") return t.status_upcoming;
-    return t.status_closed;
-  };
+  const statusLabel = (s: string) => s === "active" ? t.status_active : s === "upcoming" ? t.status_upcoming : t.status_closed;
 
   return (
-    <div style={{ fontFamily: "'DM Sans', sans-serif", background: "#FAF8F4", minHeight: "100vh", color: "#1A1612" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <div style={{ fontFamily: "'Nunito', sans-serif", background: C.bg, minHeight: "100vh", color: C.ink }}>
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
       {/* LANG BAR */}
-      <div style={{ background: "#1A1612", display: "flex", justifyContent: "flex-end", padding: "8px 32px", gap: 16 }}>
-        {(["tr", "en", "it", "lt"] as Lang[]).map(l => (
+      <div style={{ background: C.ink, display: "flex", justifyContent: "flex-end", padding: "8px 32px", gap: 8 }}>
+        {(["tr","en","it","lt"] as Lang[]).map(l => (
           <button key={l} onClick={() => setLang(l)} style={{
-            background: "none", border: "none", cursor: "pointer",
-            color: lang === l ? "#C9A96E" : "rgba(255,255,255,0.4)",
+            background: lang === l ? C.orange : "transparent",
+            border: "none", cursor: "pointer",
+            color: lang === l ? C.ink : "rgba(255,255,255,0.4)",
             fontSize: 11, letterSpacing: 2, textTransform: "uppercase",
-            borderBottom: lang === l ? "1px solid #C9A96E" : "1px solid transparent",
-            paddingBottom: 2, fontFamily: "'DM Sans', sans-serif"
+            padding: "3px 12px", borderRadius: 20,
+            fontFamily: "'Nunito', sans-serif", fontWeight: 700,
           }}>{l.toUpperCase()}</button>
         ))}
       </div>
 
       {/* HEADER */}
-      <div style={{ background: "#1A1612", padding: "40px 32px", textAlign: "center" }}>
-        <div style={{ fontSize: 10, letterSpacing: 4, color: "#C9A96E", textTransform: "uppercase", marginBottom: 10 }}>Erasmus+ KA210-SCH</div>
-        <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 48, fontWeight: 300, color: "#fff", letterSpacing: 2 }}>
-          C-LINE <em style={{ color: "#C9A96E" }}>Exclusive</em>
-        </div>
-        <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "rgba(255,255,255,0.6)", marginTop: -4 }}>{t.title}</div>
-        <div style={{ width: 60, height: 1, background: "#C9A96E", margin: "16px auto 0", opacity: 0.5 }} />
-        <div style={{ marginTop: 16, fontSize: 10, letterSpacing: 2, color: "rgba(255,255,255,0.35)", textTransform: "uppercase" }}>
-          Türkiye · Letonya · İtalya
+      <div style={{ position: "relative", overflow: "hidden", background: C.ink, padding: "52px 32px 60px", textAlign: "center" }}>
+        {/* Watercolor blobs */}
+        <svg style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",pointerEvents:"none" }} viewBox="0 0 1200 380" preserveAspectRatio="xMidYMid slice">
+          <ellipse cx="100" cy="80"  rx="200" ry="130" fill={C.orange} opacity="0.18" />
+          <ellipse cx="320" cy="200" rx="240" ry="150" fill={C.yellow} opacity="0.15" />
+          <ellipse cx="680" cy="60"  rx="280" ry="160" fill={C.teal}   opacity="0.15" />
+          <ellipse cx="980" cy="170" rx="220" ry="140" fill={C.blue}   opacity="0.18" />
+          <ellipse cx="1150" cy="60" rx="160" ry="110" fill={C.green}  opacity="0.16" />
+          <ellipse cx="500" cy="340" rx="200" ry="80"  fill={C.orange} opacity="0.1" />
+        </svg>
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(244,169,106,0.18)", border:"1px solid rgba(244,169,106,0.35)", borderRadius:20, padding:"4px 18px", marginBottom:18 }}>
+            <span style={{ width:6, height:6, background:C.orange, borderRadius:"50%", display:"inline-block" }}/>
+            <span style={{ fontSize:10, letterSpacing:3, color:C.orange, textTransform:"uppercase" }}>Erasmus+ KA210-SCH</span>
+          </div>
+          <div style={{ fontFamily:"'Playfair Display', serif", fontSize:52, fontWeight:400, color:C.white, letterSpacing:1, lineHeight:1.1 }}>
+            C-LINE <em style={{ color:C.orange }}>Exclusive</em>
+          </div>
+          <div style={{ fontFamily:"'Playfair Display', serif", fontSize:22, color:"rgba(255,255,255,0.6)", marginTop:8 }}>{t.title}</div>
+          <div style={{ display:"flex", justifyContent:"center", gap:10, marginTop:20 }}>
+            {[C.orange, C.teal, C.blue, C.yellow, C.green].map((c,i) => (
+              <div key={i} style={{ width:10, height:10, borderRadius:"50%", background:c, opacity:0.85 }}/>
+            ))}
+          </div>
+          <div style={{ marginTop:12, fontSize:11, color:"rgba(255,255,255,0.28)", letterSpacing:2, textTransform:"uppercase" }}>Türkiye · Letonya · İtalya</div>
         </div>
       </div>
 
       {/* MAIN */}
-      <div style={{ maxWidth: 960, margin: "0 auto", padding: "40px 24px" }}>
+      <div style={{ maxWidth:980, margin:"0 auto", padding:"44px 24px" }}>
 
-        {/* SECTION TITLE */}
-        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 28 }}>
-          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 300 }}>{t.auctions}</span>
-          <div style={{ flex: 1, height: 1, background: "#D4C9B5" }} />
-          <span style={{ fontSize: 10, letterSpacing: 2, color: "#8A8078", textTransform: "uppercase" }}>
-            {products.filter(p => p.status === "active").length} aktif
+        <div style={{ display:"flex", alignItems:"center", gap:16, marginBottom:32 }}>
+          <span style={{ fontFamily:"'Playfair Display', serif", fontSize:30, fontWeight:400 }}>{t.auctions}</span>
+          <div style={{ flex:1, height:3, borderRadius:3, background:`linear-gradient(90deg,${C.orange},${C.teal},${C.blue},${C.yellow},transparent)`, opacity:0.55 }}/>
+          <span style={{ fontSize:10, letterSpacing:2, color:C.inkMuted, textTransform:"uppercase" }}>
+            {products.filter(p=>p.status==="active").length} aktif
           </span>
         </div>
 
-        {products.length === 0 && (
-          <p style={{ color: "#8A8078", fontSize: 14 }}>{t.noProducts}</p>
-        )}
+        {products.length === 0 && <p style={{ color:C.inkMuted, fontSize:14 }}>{t.noProducts}</p>}
 
         {/* LOTS GRID */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 24, marginBottom: 48 }}>
-          {products.map(p => {
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(270px,1fr))", gap:24, marginBottom:52 }}>
+          {products.map((p, idx) => {
+            const acc = cardAccents[idx % cardAccents.length];
             const topBid = getTopBid(p.id);
             const current = getCurrentAmount(p);
-            const isSelected = selected?.id === p.id;
+            const isSel = selected?.id === p.id;
             return (
-              <div key={p.id} onClick={() => { setSelected(p); setMsg(null); }}
-                style={{
-                  background: "#fff", border: isSelected ? "2px solid #C9A96E" : "1px solid #D4C9B5",
-                  cursor: "pointer", transition: "transform .2s",
-                  transform: isSelected ? "translateY(-2px)" : undefined,
-                  boxShadow: isSelected ? "0 8px 32px rgba(26,22,18,0.12)" : undefined,
-                }}>
+              <div key={p.id} onClick={() => { setSelected(p); setMsg(null); }} style={{
+                background: C.white,
+                border: isSel ? `2px solid ${acc.dot}` : `1px solid ${C.border}`,
+                borderRadius: 16, cursor:"pointer", overflow:"hidden",
+                transition:"transform .2s, box-shadow .2s",
+                transform: isSel ? "translateY(-4px)" : undefined,
+                boxShadow: isSel ? `0 12px 36px ${acc.dot}50` : "0 2px 10px rgba(0,0,0,0.06)",
+              }}>
                 {/* IMAGE */}
-                <div style={{ height: 180, background: "linear-gradient(135deg,#e8e0d4,#d5cec5)", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
+                <div style={{ height:190, background:acc.bg, display:"flex", alignItems:"center", justifyContent:"center", position:"relative", overflow:"hidden" }}>
+                  {/* Mini watercolor blobs in card */}
+                  <svg style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",pointerEvents:"none",opacity:0.4 }} viewBox="0 0 270 190">
+                    <ellipse cx="220" cy="30"  rx="80" ry="55"  fill={acc.dot} opacity="0.35"/>
+                    <ellipse cx="40"  cy="160" rx="65" ry="45"  fill={acc.dot} opacity="0.25"/>
+                    <ellipse cx="130" cy="95"  rx="50" ry="35"  fill={acc.dot} opacity="0.15"/>
+                  </svg>
                   {p.image_url
-                    ? <img src={p.image_url} alt={getName(p)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                    : <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 12, color: "#9a9088" }}>Görsel Yükleniyor</span>
+                    ? <img src={p.image_url} alt={getName(p)} style={{ width:"100%",height:"100%",objectFit:"cover",position:"absolute",top:0,left:0 }}/>
+                    : <span style={{ fontFamily:"'Playfair Display', serif", fontSize:13, color:acc.badge, position:"relative", zIndex:1, opacity:0.7 }}>Görsel Yükleniyor</span>
                   }
-                  <span style={{
-                    position: "absolute", top: 10, left: 10, fontSize: 9, letterSpacing: 2,
-                    textTransform: "uppercase", padding: "3px 8px",
-                    background: statusColor[p.status] || "#888", color: "#a8d4c4"
+                  <div style={{
+                    position:"absolute", top:12, left:12, zIndex:2,
+                    background: p.status==="active" ? acc.dot : "rgba(0,0,0,0.4)",
+                    color: C.white, fontSize:9, letterSpacing:2, textTransform:"uppercase",
+                    padding:"4px 12px", borderRadius:20, display:"flex", alignItems:"center", gap:5, fontWeight:700
                   }}>
-                    {p.status === "active" && <span style={{ display: "inline-block", width: 6, height: 6, background: "#4CAF50", borderRadius: "50%", marginRight: 4 }} />}
+                    {p.status==="active" && <span style={{ width:5,height:5,background:C.white,borderRadius:"50%",display:"inline-block" }}/>}
                     {statusLabel(p.status)}
-                  </span>
-                </div>
-                <div style={{ padding: "14px 16px" }}>
-                  <div style={{ fontSize: 10, letterSpacing: 2, color: "#8A8078", textTransform: "uppercase", marginBottom: 4 }}>
-                    {t.lot} {products.indexOf(p) + 1}
                   </div>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, marginBottom: 8, lineHeight: 1.3 }}>{getName(p)}</div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", borderTop: "1px solid #D4C9B5", paddingTop: 10 }}>
+                </div>
+                <div style={{ padding:"16px 18px" }}>
+                  <div style={{ fontSize:10, letterSpacing:2, color:C.inkMuted, textTransform:"uppercase", marginBottom:4 }}>{t.lot} {idx+1}</div>
+                  <div style={{ fontFamily:"'Playfair Display', serif", fontSize:20, marginBottom:12, lineHeight:1.3 }}>{getName(p)}</div>
+                  <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", borderTop:`1px solid ${C.border}`, paddingTop:12 }}>
                     <div>
-                      <div style={{ fontSize: 10, letterSpacing: 1, color: "#8A8078", textTransform: "uppercase", marginBottom: 2 }}>{t.currentBid}</div>
-                      <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "#8B6914" }}>₺ {current.toLocaleString()}</div>
+                      <div style={{ fontSize:10, letterSpacing:1, color:C.inkMuted, textTransform:"uppercase", marginBottom:2 }}>{t.currentBid}</div>
+                      <div style={{ fontFamily:"'Playfair Display', serif", fontSize:24, color:acc.price, fontWeight:600 }}>₺ {current.toLocaleString()}</div>
                     </div>
-                    <div style={{ textAlign: "right" }}>
-                      <div style={{ fontSize: 11, color: "#8A8078" }}>{bids[p.id]?.length || 0} {t.bidCount}</div>
-                      {topBid && <div style={{ fontSize: 11, color: "#8A8078" }}>{topBid.bidder_name.split(" ")[0]}</div>}
+                    <div style={{ textAlign:"right" }}>
+                      <div style={{ background:acc.bg, color:acc.badge, fontSize:11, fontWeight:700, padding:"4px 12px", borderRadius:12 }}>
+                        {bids[p.id]?.length || 0} {t.bidCount}
+                      </div>
+                      {topBid && <div style={{ fontSize:11, color:C.inkMuted, marginTop:4 }}>{topBid.bidder_name.split(" ")[0]}</div>}
                     </div>
                   </div>
                 </div>
@@ -330,79 +293,108 @@ export default function Home() {
         </div>
 
         {/* BID FORM */}
-        <div style={{ background: "#F0EBE0", border: "1px solid #D4C9B5", padding: "32px 36px", marginBottom: 40 }}>
-          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 300, marginBottom: 4 }}>
-            {selected ? `${t.lot} ${products.indexOf(selected) + 1} — ${getName(selected)}` : t.selectLot}
-          </div>
-          {selected && <div style={{ fontSize: 12, color: "#8A8078", marginBottom: 24 }}>{getDesc(selected)}</div>}
+        <div style={{ position:"relative", overflow:"hidden", background:C.bgWarm, border:`1px solid ${C.border}`, borderRadius:20, padding:"36px 40px", marginBottom:40 }}>
+          <svg style={{ position:"absolute",top:0,right:0,width:300,height:300,pointerEvents:"none",opacity:0.18 }} viewBox="0 0 300 300">
+            <ellipse cx="200" cy="80" rx="150" ry="110" fill={C.orange}/>
+            <ellipse cx="250" cy="200" rx="100" ry="80" fill={C.yellow}/>
+          </svg>
+          <svg style={{ position:"absolute",bottom:0,left:0,width:220,height:220,pointerEvents:"none",opacity:0.14 }} viewBox="0 0 220 220">
+            <ellipse cx="60" cy="160" rx="120" ry="90" fill={C.teal}/>
+          </svg>
 
-          {selected && (
-            <>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 14 }}>
-                {[
-                  { key: "name", label: t.yourName, type: "text", placeholder: "Ali Yılmaz" },
-                  { key: "phone", label: t.yourPhone, type: "tel", placeholder: "+90 5xx xxx xx xx" },
-                  { key: "email", label: t.yourEmail, type: "email", placeholder: "ornek@mail.com" },
-                ].map(f => (
-                  <div key={f.key} style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-                    <label style={{ fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: "#8A8078" }}>{f.label}</label>
-                    <input type={f.type} placeholder={f.placeholder}
-                      value={form[f.key as keyof typeof form] as string}
-                      onChange={e => setForm(prev => ({ ...prev, [f.key]: e.target.value }))}
-                      style={{ background: "#fff", border: "1px solid #D4C9B5", padding: "10px 12px", fontSize: 14, fontFamily: "'DM Sans', sans-serif", outline: "none" }}
-                    />
-                  </div>
-                ))}
-                <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-                  <label style={{ fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: "#8A8078" }}>{t.bidAmount}</label>
-                  <div style={{ display: "flex" }}>
-                    <span style={{ background: "#8B6914", color: "#fff", padding: "10px 12px", fontSize: 14, fontWeight: 500 }}>₺</span>
-                    <input type="number" placeholder={`Min. ${(getCurrentAmount(selected) + 1).toLocaleString()}`}
-                      value={form.amount}
-                      onChange={e => setForm(prev => ({ ...prev, amount: e.target.value }))}
-                      style={{ flex: 1, border: "1px solid #D4C9B5", borderLeft: "none", padding: "10px 12px", fontSize: 14, fontFamily: "'DM Sans', sans-serif", outline: "none" }}
-                    />
+          <div style={{ position:"relative", zIndex:1 }}>
+            <div style={{ fontFamily:"'Playfair Display', serif", fontSize:26, fontWeight:400, marginBottom:6 }}>
+              {selected ? `${t.lot} ${products.indexOf(selected)+1} — ${getName(selected)}` : t.selectLot}
+            </div>
+            {selected && <div style={{ fontSize:13, color:C.inkLight, marginBottom:28, lineHeight:1.6 }}>{getDesc(selected)}</div>}
+
+            {selected && (
+              <>
+                <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16, marginBottom:16 }}>
+                  {[
+                    { key:"name",  label:t.yourName,  type:"text",   ph:"Ali Yılmaz" },
+                    { key:"phone", label:t.yourPhone, type:"tel",    ph:"+90 5xx xxx xx xx" },
+                    { key:"email", label:t.yourEmail, type:"email",  ph:"ornek@mail.com" },
+                  ].map(f => (
+                    <div key={f.key} style={{ display:"flex", flexDirection:"column", gap:6 }}>
+                      <label style={{ fontSize:11, letterSpacing:1, textTransform:"uppercase", color:C.inkMuted, fontWeight:700 }}>{f.label}</label>
+                      <input type={f.type} placeholder={f.ph}
+                        value={form[f.key as keyof typeof form] as string}
+                        onChange={e => setForm(prev => ({ ...prev, [f.key]: e.target.value }))}
+                        style={{ background:C.white, border:`1.5px solid ${C.border}`, borderRadius:10, padding:"11px 14px", fontSize:14, fontFamily:"'Nunito', sans-serif", outline:"none", color:C.ink }}
+                      />
+                    </div>
+                  ))}
+                  <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
+                    <label style={{ fontSize:11, letterSpacing:1, textTransform:"uppercase", color:C.inkMuted, fontWeight:700 }}>{t.bidAmount}</label>
+                    <div style={{ display:"flex" }}>
+                      <span style={{ background:C.orange, color:C.white, padding:"11px 14px", fontSize:16, fontWeight:700, borderRadius:"10px 0 0 10px" }}>₺</span>
+                      <input type="number" placeholder={`Min. ${(getCurrentAmount(selected)+1).toLocaleString()}`}
+                        value={form.amount}
+                        onChange={e => setForm(prev => ({ ...prev, amount: e.target.value }))}
+                        style={{ flex:1, border:`1.5px solid ${C.border}`, borderLeft:"none", borderRadius:"0 10px 10px 0", padding:"11px 14px", fontSize:14, fontFamily:"'Nunito', sans-serif", outline:"none", color:C.ink }}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div style={{ borderTop: "1px solid #D4C9B5", paddingTop: 16, marginBottom: 20 }}>
-                <label style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 12, color: "#8A8078", lineHeight: 1.6, cursor: "pointer" }}>
-                  <input type="checkbox" checked={form.gdpr} onChange={e => setForm(p => ({ ...p, gdpr: e.target.checked }))} style={{ marginTop: 3, accentColor: "#8B6914" }} />
-                  {t.gdpr}
-                </label>
-                <label style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 12, color: "#8A8078", lineHeight: 1.6, cursor: "pointer", marginTop: 10 }}>
-                  <input type="checkbox" checked={form.notify} onChange={e => setForm(p => ({ ...p, notify: e.target.checked }))} style={{ marginTop: 3, accentColor: "#8B6914" }} />
-                  {t.notify}
-                </label>
-              </div>
+                <div style={{ borderTop:`1px dashed ${C.border}`, paddingTop:16, marginBottom:22 }}>
+                  {[{ key:"gdpr", label:t.gdpr }, { key:"notify", label:t.notify }].map(f => (
+                    <label key={f.key} style={{ display:"flex", alignItems:"flex-start", gap:10, fontSize:12, color:C.inkLight, lineHeight:1.7, cursor:"pointer", marginBottom:10 }}>
+                      <input type="checkbox"
+                        checked={form[f.key as "gdpr"|"notify"]}
+                        onChange={e => setForm(p => ({ ...p, [f.key]: e.target.checked }))}
+                        style={{ marginTop:3, accentColor:C.orange, width:15, height:15 }}
+                      />
+                      {f.label}
+                    </label>
+                  ))}
+                </div>
 
-              <button onClick={handleSubmit} disabled={loading}
-                style={{
-                  background: loading ? "#888" : "#1A1612", color: "#C9A96E",
-                  border: "none", padding: "13px 36px", fontSize: 11, letterSpacing: 3,
-                  textTransform: "uppercase", cursor: loading ? "not-allowed" : "pointer",
-                  fontFamily: "'DM Sans', sans-serif"
+                <button onClick={handleSubmit} disabled={loading} style={{
+                  background: loading ? C.inkMuted : `linear-gradient(135deg,${C.orange},${C.teal})`,
+                  color:C.white, border:"none", padding:"13px 40px",
+                  fontSize:13, letterSpacing:2, textTransform:"uppercase",
+                  cursor: loading ? "not-allowed" : "pointer",
+                  fontFamily:"'Nunito', sans-serif", fontWeight:700, borderRadius:12,
                 }}>
-                {loading ? t.submitting : t.submitBid} →
-              </button>
+                  {loading ? t.submitting : `${t.submitBid} →`}
+                </button>
 
-              {msg && (
-                <div style={{ marginTop: 16, padding: "12px 16px", background: msg.ok ? "#EAF3DE" : "#FCEBEB", border: `1px solid ${msg.ok ? "#97C459" : "#F09595"}`, fontSize: 13, color: msg.ok ? "#3B6D11" : "#A32D2D" }}>
-                  {msg.text}
-                </div>
-              )}
-            </>
-          )}
+                {msg && (
+                  <div style={{
+                    marginTop:16, padding:"12px 18px", borderRadius:10,
+                    background: msg.ok ? C.tealLight : "#FFECEC",
+                    border:`1px solid ${msg.ok ? C.teal : "#F4A0A0"}`,
+                    fontSize:13, color: msg.ok ? C.tealDark : "#C02020", fontWeight:600
+                  }}>{msg.text}</div>
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
 
       {/* FOOTER */}
-      <div style={{ background: "#1A1612", padding: "32px", textAlign: "center" }}>
-        <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "#fff", marginBottom: 8 }}>C-LINE</div>
-        <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", lineHeight: 1.7 }}>{t.footer}</div>
-        <div style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", marginTop: 4 }}>{t.partners}</div>
-        <div style={{ fontSize: 10, color: "rgba(255,255,255,0.2)", marginTop: 16, letterSpacing: 1 }}>C-LINE PROJECT © 2026</div>
+      <div style={{ position:"relative", overflow:"hidden", background:C.ink, padding:"44px 32px", textAlign:"center" }}>
+        <svg style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",pointerEvents:"none",opacity:0.12 }} viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid slice">
+          <ellipse cx="100"  cy="100" rx="200" ry="120" fill={C.orange}/>
+          <ellipse cx="400"  cy="50"  rx="180" ry="100" fill={C.teal}/>
+          <ellipse cx="700"  cy="150" rx="220" ry="110" fill={C.blue}/>
+          <ellipse cx="1000" cy="60"  rx="190" ry="100" fill={C.yellow}/>
+          <ellipse cx="1150" cy="140" rx="160" ry="90"  fill={C.green}/>
+        </svg>
+        <div style={{ position:"relative", zIndex:1 }}>
+          <div style={{ fontFamily:"'Playfair Display', serif", fontSize:28, color:C.white, marginBottom:12 }}>C-LINE</div>
+          <div style={{ display:"flex", justifyContent:"center", gap:10, marginBottom:16 }}>
+            {[C.orange, C.teal, C.blue, C.yellow, C.green].map((c,i) => (
+              <div key={i} style={{ width:10, height:10, borderRadius:"50%", background:c, opacity:0.9 }}/>
+            ))}
+          </div>
+          <div style={{ fontSize:12, color:"rgba(255,255,255,0.38)", lineHeight:1.8 }}>{t.footer}</div>
+          <div style={{ fontSize:11, color:"rgba(255,255,255,0.22)", marginTop:4 }}>{t.partners}</div>
+          <div style={{ fontSize:10, color:"rgba(255,255,255,0.16)", marginTop:16, letterSpacing:1 }}>C-LINE PROJECT © 2026</div>
+        </div>
       </div>
     </div>
   );
