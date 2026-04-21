@@ -15,9 +15,9 @@ const T = {
     yourName: "Ad Soyad *",
     yourPhone: "Telefon *",
     yourEmail: "E-posta *",
-    bidAmount: "Teklif Miktarı (₺) *",
+    bidAmount: "Teklif Miktarı (€) *",
     submitBid: "Teklif Ver",
-    submitting: "Gönderiliyor...", 
+    submitting: "Gönderiliyor...",
     gdpr: "Kişisel verilerimin açık artırma süreci için işlenmesine onay veriyorum. *",
     notify: "Artırma sonucunda (kazanma/geride kalma) e-posta bildirimi almak istiyorum.",
     noProducts: "Henüz ürün eklenmemiştir.",
@@ -28,11 +28,11 @@ const T = {
     gdprRequired: "Devam etmek için KVKK onayı gereklidir.",
     footer1: "Bu proje Türkiye Ulusal Ajansı tarafından desteklenmiştir.",
     footer2: "Erasmus+ KA210-SCH — A Common Language for Integrative Entrepreneurship (C-LINE)",
-    footer3: "Bakırköy Bilim ve Sanat Merkezi koordinatörlüğünde; Türkiye, Litvanya ve İtalya ortaklığıyla yürütülmektedir.",
+    footer3: "Bakırköy Bilim ve Sanat Merkezi koordinatörlüğünde; Türkiye, Letonya ve İtalya ortaklığıyla yürütülmektedir.",
     status_active: "Canlı", status_upcoming: "Yakında", status_closed: "Kapandı",
     selectLot: "Teklif vermek için yukarıdan bir lot seçin ↑", lot: "Lot",
     required: "* zorunlu alan",
-    partners: "Türkiye · Litvanya · İtalya",
+    partners: "Türkiye · Letonya · İtalya",
   },
   en: {
     title: "C-LINE Auction House",
@@ -40,7 +40,7 @@ const T = {
     currentBid: "Current Bid",
     bidCount: "bids",
     yourName: "Full Name *", yourPhone: "Phone *", yourEmail: "Email *",
-    bidAmount: "Bid Amount (₺) *", submitBid: "Place Bid", submitting: "Submitting...",
+    bidAmount: "Bid Amount (€) *", submitBid: "Place Bid", submitting: "Submitting...",
     gdpr: "I consent to my personal data being processed for the auction. *",
     notify: "I want to receive email notifications (win/outbid) for this auction.",
     noProducts: "No products added yet.",
@@ -51,11 +51,11 @@ const T = {
     gdprRequired: "GDPR consent is required to continue.",
     footer1: "This project is supported by the Turkish National Agency.",
     footer2: "Erasmus+ KA210-SCH — A Common Language for Integrative Entrepreneurship (C-LINE)",
-    footer3: "Coordinated by Bakırköy Science and Art Centre; partnership of Turkey, Lithuania and Italy.",
+    footer3: "Coordinated by Bakırköy Science and Art Centre; partnership of Turkey, Latvia and Italy.",
     status_active: "Live", status_upcoming: "Upcoming", status_closed: "Closed",
     selectLot: "Select a lot above to place a bid ↑", lot: "Lot",
     required: "* required field",
-    partners: "Turkey · Lithuania · Italy",
+    partners: "Turkey · Latvia · Italy",
   },
   it: {
     title: "C-LINE Casa d'Aste",
@@ -63,7 +63,7 @@ const T = {
     currentBid: "Offerta Attuale",
     bidCount: "offerte",
     yourName: "Nome e Cognome *", yourPhone: "Telefono *", yourEmail: "Email *",
-    bidAmount: "Importo Offerta (₺) *", submitBid: "Fai un'Offerta", submitting: "Invio...",
+    bidAmount: "Importo Offerta (€) *", submitBid: "Fai un'Offerta", submitting: "Invio...",
     gdpr: "Acconsento al trattamento dei miei dati personali per l'asta. *",
     notify: "Voglio ricevere notifiche email (vincita/superata) per questa asta.",
     noProducts: "Nessun prodotto aggiunto.",
@@ -74,43 +74,43 @@ const T = {
     gdprRequired: "Il consenso GDPR è obbligatorio per continuare.",
     footer1: "Questo progetto è supportato dall'Agenzia Nazionale Turca.",
     footer2: "Erasmus+ KA210-SCH — A Common Language for Integrative Entrepreneurship (C-LINE)",
-    footer3: "Coordinato dal Centro Scientifico e Artistico di Bakırköy; partnership tra Turchia, Lituania e Italia.",
+    footer3: "Coordinato dal Centro Scientifico e Artistico di Bakırköy; partnership tra Turchia, Lettonia e Italia.",
     status_active: "In Corso", status_upcoming: "Prossimamente", status_closed: "Chiusa",
     selectLot: "Seleziona un lotto qui sopra per fare un'offerta ↑", lot: "Lotto",
     required: "* campo obbligatorio",
-    partners: "Turchia · Lituania · Italia",
+    partners: "Turchia · Lettonia · Italia",
   },
-  lt: {
-    title: "C-LINE Aukciono Namai",
-    auctions: "Aktyvūs Aukcionai",
-    currentBid: "Dabartinis Pasiūlymas",
-    bidCount: "pasiūlymai",
-    yourName: "Vardas Pavardė *", yourPhone: "Telefonas *", yourEmail: "El. paštas *",
-    bidAmount: "Pasiūlymo Suma (₺) *", submitBid: "Pasiūlyti", submitting: "Siunčiama...",
-    gdpr: "Sutinku, kad mano asmens duomenys būtų tvarkomi aukciono tikslais. *",
-    notify: "Noriu gauti el. pašto pranešimus (laimėjimas/pralenktas) apie šį aukcioną.",
-    noProducts: "Produktų dar nepridėta.",
-    successMsg: "✓ Jūsų pasiūlymas gautas! Patvirtinimas išsiųstas el. paštu.",
-    errorMsg: "Įvyko klaida. Bandykite dar kartą.",
-    minBidError: "Jūsų pasiūlymas turi būti didesnis už dabartinį.",
-    fillAll: "Užpildykite visus privalomus laukus (*).",
-    gdprRequired: "Norint tęsti, būtinas BDAR sutikimas.",
-    footer1: "Šį projektą remia Turkijos nacionalinė agentūra.",
+  lv: {
+    title: "C-LINE Izsoļu Nams",
+    auctions: "Aktīvās Izsoles",
+    currentBid: "Pašreizējā Cena",
+    bidCount: "piedāvājumi",
+    yourName: "Vārds Uzvārds *", yourPhone: "Tālrunis *", yourEmail: "E-pasts *",
+    bidAmount: "Solījuma Summa (€) *", submitBid: "Solīt", submitting: "Sūta...",
+    gdpr: "Piekrītu savu personas datu apstrādei izsoles procesā. *",
+    notify: "Vēlos saņemt e-pasta paziņojumus (uzvara/pārsolīts) par izsoli.",
+    noProducts: "Vēl nav pievienotu produktu.",
+    successMsg: "✓ Jūsu solījums ir saņemts! Apstiprinājums nosūtīts uz e-pastu.",
+    errorMsg: "Radās kļūda. Lūdzu, mēģiniet vēlreiz.",
+    minBidError: "Jūsu solījumam jābūt augstākam par pašreizējo.",
+    fillAll: "Lūdzu, aizpildiet visus obligātos laukus (*).",
+    gdprRequired: "Lai turpinātu, nepieciešama GDPR piekrišana.",
+    footer1: "Šo projektu atbalsta Turcijas Nacionālā aģentūra.",
     footer2: "Erasmus+ KA210-SCH — A Common Language for Integrative Entrepreneurship (C-LINE)",
-    footer3: "Koordinuoja Bakırköy mokslo ir meno centras; Turkijos, Lietuvos ir Italijos partnerystė.",
-    status_active: "Aktyvus", status_upcoming: "Netrukus", status_closed: "Uždarytas",
-    selectLot: "Pasirinkite lotą aukščiau, kad pasiūlytumėte ↑", lot: "Lotas",
-    required: "* privalomas laukas",
-    partners: "Turkija · Lietuva · Italija",
+    footer3: "Koordinē Bakırköy Zinātnes un mākslas centrs; Turcijas, Latvijas un Itālijas partnerība.",
+    status_active: "Aktīva", status_upcoming: "Drīzumā", status_closed: "Slēgta",
+    selectLot: "Izvēlieties lotu augstāk, lai solītu ↑", lot: "Lots",
+    required: "* obligāts lauks",
+    partners: "Turcija · Latvija · Itālija",
   },
 };
 
-type Lang = "tr" | "en" | "it" | "lt";
+type Lang = "tr" | "en" | "it" | "lv";
 
 interface Product {
   id: string;
-  name_tr: string; name_en: string; name_lt: string; name_it: string;
-  description_tr: string; description_en: string; description_lt: string; description_it: string;
+  name_tr: string; name_en: string; name_lv: string; name_it: string;
+  description_tr: string; description_en: string; description_lv: string; description_it: string;
   image_url: string;
   start_bid: number;
   status: string;
@@ -143,7 +143,7 @@ const cardAccents = [
   { bg: C.pinkLight,   dot: C.pink,   badge: C.pinkDark,   price: C.pinkDark },
 ];
 
-// 🇹🇷 Türkiye bayrağı
+// 🇹🇷 Türkiye
 const FlagTR = () => (
   <svg width="32" height="22" viewBox="0 0 32 22" style={{ borderRadius: 3, display: "block" }}>
     <rect width="32" height="22" fill="#E30A17"/>
@@ -153,16 +153,15 @@ const FlagTR = () => (
   </svg>
 );
 
-// 🇱🇹 Litvanya bayrağı — sarı / yeşil / kırmızı
-const FlagLT = () => (
+// 🇱🇻 Letonya — bordo / beyaz / bordo (2:1:2 oranı)
+const FlagLV = () => (
   <svg width="32" height="22" viewBox="0 0 32 22" style={{ borderRadius: 3, display: "block" }}>
-    <rect width="32" height="22" fill="#C1272D"/>
-    <rect width="32" height="14.7" fill="#006A44"/>
-    <rect width="32" height="7.3"  fill="#FDB913"/>
+    <rect width="32" height="22" fill="#9E3039"/>
+    <rect width="32" height="6.6" y="7.7" fill="#fff"/>
   </svg>
 );
 
-// 🇮🇹 İtalya bayrağı
+// 🇮🇹 İtalya
 const FlagIT = () => (
   <svg width="32" height="22" viewBox="0 0 32 22" style={{ borderRadius: 3, display: "block" }}>
     <rect width="32" height="22" fill="#CE2B37"/>
@@ -244,16 +243,16 @@ export default function Home() {
     <div style={{ fontFamily: "'Nunito', sans-serif", background: C.bg, minHeight: "100vh", color: C.ink }}>
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-      {/* TOP BAR — bayraklar + dil seçimi */}
+      {/* TOP BAR */}
       <div style={{ background: C.ink, display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 32px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <FlagTR />
-          <FlagLT />
+          <FlagLV />
           <FlagIT />
-          <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 1, marginLeft: 4 }}>TR · LT · IT</span>
+          <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 1, marginLeft: 4 }}>TR · LV · IT</span>
         </div>
         <div style={{ display: "flex", gap: 6 }}>
-          {(["tr","en","it","lt"] as Lang[]).map(l => (
+          {(["tr","en","it","lv"] as Lang[]).map(l => (
             <button key={l} onClick={() => setLang(l)} style={{
               background: lang === l ? C.orange : "transparent",
               border: "none", cursor: "pointer",
@@ -296,7 +295,6 @@ export default function Home() {
 
       {/* MAIN */}
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "44px 24px" }}>
-
         <div style={{ display:"flex", alignItems:"center", gap:16, marginBottom:32 }}>
           <span style={{ fontFamily:"'Playfair Display', serif", fontSize:30, fontWeight:400 }}>{t.auctions}</span>
           <div style={{ flex:1, height:3, borderRadius:3, background:`linear-gradient(90deg,${C.orange},${C.teal},${C.blue},${C.yellow},${C.green},transparent)`, opacity:0.55 }}/>
@@ -322,8 +320,7 @@ export default function Home() {
             return (
               <div key={p.id} onClick={() => { setSelected(p); setMsg(null); window.scrollTo({ top: 9999, behavior: "smooth" }); }}
                 style={{
-                  background: C.white,
-                  border: isSel ? `2px solid ${acc.dot}` : `1px solid ${C.border}`,
+                  background: C.white, border: isSel ? `2px solid ${acc.dot}` : `1px solid ${C.border}`,
                   borderRadius: 16, cursor: "pointer", overflow: "hidden",
                   transition: "transform .2s, box-shadow .2s",
                   transform: isSel ? "translateY(-4px)" : undefined,
@@ -353,7 +350,7 @@ export default function Home() {
                   <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", borderTop:`1px solid ${C.border}`, paddingTop:10 }}>
                     <div>
                       <div style={{ fontSize:9, letterSpacing:1, color:C.inkMuted, textTransform:"uppercase", marginBottom:2 }}>{t.currentBid}</div>
-                      <div style={{ fontFamily:"'Playfair Display', serif", fontSize:22, color:acc.price, fontWeight:600 }}>₺ {current.toLocaleString()}</div>
+                      <div style={{ fontFamily:"'Playfair Display', serif", fontSize:22, color:acc.price, fontWeight:600 }}>€ {current.toLocaleString()}</div>
                     </div>
                     <div style={{ textAlign:"right" }}>
                       <div style={{ background:acc.bg, color:acc.badge, fontSize:10, fontWeight:700, padding:"3px 10px", borderRadius:12 }}>{bids[p.id]?.length || 0} {t.bidCount}</div>
@@ -404,7 +401,7 @@ export default function Home() {
                   <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
                     <label style={{ fontSize:11, letterSpacing:1, textTransform:"uppercase", color:C.inkMuted, fontWeight:700 }}>{t.bidAmount}</label>
                     <div style={{ display:"flex" }}>
-                      <span style={{ background:C.orange, color:C.white, padding:"11px 14px", fontSize:16, fontWeight:700, borderRadius:"10px 0 0 10px" }}>₺</span>
+                      <span style={{ background:C.orange, color:C.white, padding:"11px 14px", fontSize:16, fontWeight:700, borderRadius:"10px 0 0 10px" }}>€</span>
                       <input type="number" min="0"
                         placeholder={`Min. ${(getCurrentAmount(selected)+1).toLocaleString()}`}
                         value={form.amount}
@@ -454,15 +451,13 @@ export default function Home() {
           <ellipse cx="1150" cy="200" rx="160" ry="90"  fill={C.green}/>
         </svg>
         <div style={{ position:"relative", zIndex:1, maxWidth:900, margin:"0 auto" }}>
-
-          {/* Erasmus + bayraklar */}
           <div style={{ display:"flex", justifyContent:"center", alignItems:"center", gap:48, marginBottom:36, flexWrap:"wrap" }}>
             <ErasmusLogo />
             <div style={{ width:1, height:80, background:"rgba(255,255,255,0.15)" }}/>
             <div style={{ display:"flex", gap:20, alignItems:"center" }}>
               {[
                 { Flag: FlagTR, label: "TÜRKİYE" },
-                { Flag: FlagLT, label: "LİTVANYA" },
+                { Flag: FlagLV, label: "LETONYA" },
                 { Flag: FlagIT, label: "İTALYA" },
               ].map(({ Flag, label }) => (
                 <div key={label} style={{ textAlign:"center" }}>
@@ -472,7 +467,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-
           <div style={{ textAlign:"center" }}>
             <div style={{ fontFamily:"'Playfair Display', serif", fontSize:26, color:C.white, marginBottom:12 }}>C-LINE</div>
             <div style={{ display:"flex", justifyContent:"center", gap:8, marginBottom:20 }}>
