@@ -11,14 +11,13 @@ const T = {
     title: "C-LINE Açık Artırma Evi",
     auctions: "Açık Artırmalar",
     currentBid: "Güncel Teklif",
-    startBid: "Başlangıç",
     bidCount: "teklif",
     yourName: "Ad Soyad *",
     yourPhone: "Telefon *",
     yourEmail: "E-posta *",
     bidAmount: "Teklif Miktarı (₺) *",
     submitBid: "Teklif Ver",
-    submitting: "Gönderiliyor...",
+    submitting: "Gönderiliyor...", 
     gdpr: "Kişisel verilerimin açık artırma süreci için işlenmesine onay veriyorum. *",
     notify: "Artırma sonucunda (kazanma/geride kalma) e-posta bildirimi almak istiyorum.",
     noProducts: "Henüz ürün eklenmemiştir.",
@@ -29,16 +28,16 @@ const T = {
     gdprRequired: "Devam etmek için KVKK onayı gereklidir.",
     footer1: "Bu proje Türkiye Ulusal Ajansı tarafından desteklenmiştir.",
     footer2: "Erasmus+ KA210-SCH — A Common Language for Integrative Entrepreneurship (C-LINE)",
-    footer3: "Bakırköy Bilim ve Sanat Merkezi koordinatörlüğünde; Türkiye, Letonya ve İtalya ortaklığıyla yürütülmektedir.",
+    footer3: "Bakırköy Bilim ve Sanat Merkezi koordinatörlüğünde; Türkiye, Litvanya ve İtalya ortaklığıyla yürütülmektedir.",
     status_active: "Canlı", status_upcoming: "Yakında", status_closed: "Kapandı",
     selectLot: "Teklif vermek için yukarıdan bir lot seçin ↑", lot: "Lot",
     required: "* zorunlu alan",
+    partners: "Türkiye · Litvanya · İtalya",
   },
   en: {
     title: "C-LINE Auction House",
     auctions: "Live Auctions",
     currentBid: "Current Bid",
-    startBid: "Starting",
     bidCount: "bids",
     yourName: "Full Name *", yourPhone: "Phone *", yourEmail: "Email *",
     bidAmount: "Bid Amount (₺) *", submitBid: "Place Bid", submitting: "Submitting...",
@@ -52,16 +51,16 @@ const T = {
     gdprRequired: "GDPR consent is required to continue.",
     footer1: "This project is supported by the Turkish National Agency.",
     footer2: "Erasmus+ KA210-SCH — A Common Language for Integrative Entrepreneurship (C-LINE)",
-    footer3: "Coordinated by Bakırköy Science and Art Centre; partnership of Turkey, Latvia and Italy.",
+    footer3: "Coordinated by Bakırköy Science and Art Centre; partnership of Turkey, Lithuania and Italy.",
     status_active: "Live", status_upcoming: "Upcoming", status_closed: "Closed",
     selectLot: "Select a lot above to place a bid ↑", lot: "Lot",
     required: "* required field",
+    partners: "Turkey · Lithuania · Italy",
   },
   it: {
     title: "C-LINE Casa d'Aste",
     auctions: "Aste in Corso",
     currentBid: "Offerta Attuale",
-    startBid: "Partenza",
     bidCount: "offerte",
     yourName: "Nome e Cognome *", yourPhone: "Telefono *", yourEmail: "Email *",
     bidAmount: "Importo Offerta (₺) *", submitBid: "Fai un'Offerta", submitting: "Invio...",
@@ -75,33 +74,34 @@ const T = {
     gdprRequired: "Il consenso GDPR è obbligatorio per continuare.",
     footer1: "Questo progetto è supportato dall'Agenzia Nazionale Turca.",
     footer2: "Erasmus+ KA210-SCH — A Common Language for Integrative Entrepreneurship (C-LINE)",
-    footer3: "Coordinato dal Centro Scientifico e Artistico di Bakırköy; partnership tra Turchia, Lettonia e Italia.",
+    footer3: "Coordinato dal Centro Scientifico e Artistico di Bakırköy; partnership tra Turchia, Lituania e Italia.",
     status_active: "In Corso", status_upcoming: "Prossimamente", status_closed: "Chiusa",
     selectLot: "Seleziona un lotto qui sopra per fare un'offerta ↑", lot: "Lotto",
     required: "* campo obbligatorio",
+    partners: "Turchia · Lituania · Italia",
   },
   lt: {
-    title: "C-LINE Izsoļu Nams",
-    auctions: "Aktīvās Izsoles",
-    currentBid: "Pašreizējā Cena",
-    startBid: "Sākuma",
-    bidCount: "piedāvājumi",
-    yourName: "Vārds Uzvārds *", yourPhone: "Tālrunis *", yourEmail: "E-pasts *",
-    bidAmount: "Solījuma Summa (₺) *", submitBid: "Solīt", submitting: "Sūta...",
-    gdpr: "Piekrītu savu personas datu apstrādei izsolē. *",
-    notify: "Vēlos saņemt e-pasta paziņojumus (uzvara/pārsolīts) par izsoli.",
-    noProducts: "Vēl nav pievienotu produktu.",
-    successMsg: "✓ Jūsu solījums ir saņemts! Apstiprinājums nosūtīts uz e-pastu.",
-    errorMsg: "Radās kļūda. Lūdzu, mēģiniet vēlreiz.",
-    minBidError: "Jūsu solījumam jābūt augstākam par pašreizējo.",
-    fillAll: "Lūdzu, aizpildiet visus obligātos laukus (*).",
-    gdprRequired: "Lai turpinātu, nepieciešama GDPR piekrišana.",
-    footer1: "Šo projektu atbalsta Turcijas Nacionālā aģentūra.",
+    title: "C-LINE Aukciono Namai",
+    auctions: "Aktyvūs Aukcionai",
+    currentBid: "Dabartinis Pasiūlymas",
+    bidCount: "pasiūlymai",
+    yourName: "Vardas Pavardė *", yourPhone: "Telefonas *", yourEmail: "El. paštas *",
+    bidAmount: "Pasiūlymo Suma (₺) *", submitBid: "Pasiūlyti", submitting: "Siunčiama...",
+    gdpr: "Sutinku, kad mano asmens duomenys būtų tvarkomi aukciono tikslais. *",
+    notify: "Noriu gauti el. pašto pranešimus (laimėjimas/pralenktas) apie šį aukcioną.",
+    noProducts: "Produktų dar nepridėta.",
+    successMsg: "✓ Jūsų pasiūlymas gautas! Patvirtinimas išsiųstas el. paštu.",
+    errorMsg: "Įvyko klaida. Bandykite dar kartą.",
+    minBidError: "Jūsų pasiūlymas turi būti didesnis už dabartinį.",
+    fillAll: "Užpildykite visus privalomus laukus (*).",
+    gdprRequired: "Norint tęsti, būtinas BDAR sutikimas.",
+    footer1: "Šį projektą remia Turkijos nacionalinė agentūra.",
     footer2: "Erasmus+ KA210-SCH — A Common Language for Integrative Entrepreneurship (C-LINE)",
-    footer3: "Koordinē Bakırköy Zinātnes un mākslas centrs; Turcijas, Latvijas un Itālijas partnerība.",
-    status_active: "Aktīva", status_upcoming: "Drīzumā", status_closed: "Slēgta",
-    selectLot: "Izvēlieties lotu augstāk, lai solītu ↑", lot: "Lots",
-    required: "* obligāts lauks",
+    footer3: "Koordinuoja Bakırköy mokslo ir meno centras; Turkijos, Lietuvos ir Italijos partnerystė.",
+    status_active: "Aktyvus", status_upcoming: "Netrukus", status_closed: "Uždarytas",
+    selectLot: "Pasirinkite lotą aukščiau, kad pasiūlytumėte ↑", lot: "Lotas",
+    required: "* privalomas laukas",
+    partners: "Turkija · Lietuva · Italija",
   },
 };
 
@@ -143,9 +143,9 @@ const cardAccents = [
   { bg: C.pinkLight,   dot: C.pink,   badge: C.pinkDark,   price: C.pinkDark },
 ];
 
-// Flag SVGs
+// 🇹🇷 Türkiye bayrağı
 const FlagTR = () => (
-  <svg width="32" height="22" viewBox="0 0 32 22" style={{borderRadius:3,display:"block"}}>
+  <svg width="32" height="22" viewBox="0 0 32 22" style={{ borderRadius: 3, display: "block" }}>
     <rect width="32" height="22" fill="#E30A17"/>
     <circle cx="13" cy="11" r="5.5" fill="#fff"/>
     <circle cx="14.8" cy="11" r="4.3" fill="#E30A17"/>
@@ -153,34 +153,34 @@ const FlagTR = () => (
   </svg>
 );
 
+// 🇱🇹 Litvanya bayrağı — sarı / yeşil / kırmızı
 const FlagLT = () => (
-  <svg width="32" height="22" viewBox="0 0 32 22" style={{borderRadius:3,display:"block"}}>
-    <rect width="32" height="22" fill="#FDB913"/>
-    <rect width="32" height="14.7" y="7.3" fill="#006A44"/>
-    <rect width="32" height="7.3" fill="#C1272D"/>
+  <svg width="32" height="22" viewBox="0 0 32 22" style={{ borderRadius: 3, display: "block" }}>
+    <rect width="32" height="22" fill="#C1272D"/>
+    <rect width="32" height="14.7" fill="#006A44"/>
+    <rect width="32" height="7.3"  fill="#FDB913"/>
   </svg>
 );
 
+// 🇮🇹 İtalya bayrağı
 const FlagIT = () => (
-  <svg width="32" height="22" viewBox="0 0 32 22" style={{borderRadius:3,display:"block"}}>
+  <svg width="32" height="22" viewBox="0 0 32 22" style={{ borderRadius: 3, display: "block" }}>
     <rect width="32" height="22" fill="#CE2B37"/>
-    <rect width="21.3" height="22" fill="#fff"/>
+    <rect width="21.4" height="22" fill="#fff"/>
     <rect width="10.7" height="22" fill="#009246"/>
   </svg>
 );
 
+// Erasmus+ logosu
 const ErasmusLogo = () => (
-  <svg width="120" height="80" viewBox="0 0 120 80" style={{display:"block"}}>
-    {/* EU flag blue background */}
+  <svg width="120" height="80" viewBox="0 0 120 80" style={{ display: "block" }}>
     <rect width="80" height="53" x="20" y="0" rx="3" fill="#003399"/>
-    {/* Stars circle */}
-    {Array.from({length:12}).map((_,i) => {
+    {Array.from({ length: 12 }).map((_, i) => {
       const angle = (i * 30 - 90) * Math.PI / 180;
       const cx = 60 + 17 * Math.cos(angle);
       const cy = 26 + 17 * Math.sin(angle);
       return <polygon key={i} points={`${cx},${cy-3.5} ${cx+1.1},${cy-1} ${cx+3.3},${cy-1} ${cx+1.7},${cy+1} ${cx+2.2},${cy+3.2} ${cx},${cy+1.8} ${cx-2.2},${cy+3.2} ${cx-1.7},${cy+1} ${cx-3.3},${cy-1} ${cx-1.1},${cy-1}`} fill="#FFDD00"/>;
     })}
-    {/* Erasmus+ text */}
     <text x="60" y="70" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="bold" fill="#003399">Erasmus+</text>
   </svg>
 );
@@ -244,16 +244,14 @@ export default function Home() {
     <div style={{ fontFamily: "'Nunito', sans-serif", background: C.bg, minHeight: "100vh", color: C.ink }}>
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-      {/* TOP BAR — flags + lang */}
+      {/* TOP BAR — bayraklar + dil seçimi */}
       <div style={{ background: C.ink, display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 32px" }}>
-        {/* FLAGS */}
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <FlagTR />
           <FlagLT />
           <FlagIT />
-          <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 1, marginLeft: 6 }}>TR · LT · IT</span>
+          <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 1, marginLeft: 4 }}>TR · LT · IT</span>
         </div>
-        {/* LANG BUTTONS */}
         <div style={{ display: "flex", gap: 6 }}>
           {(["tr","en","it","lt"] as Lang[]).map(l => (
             <button key={l} onClick={() => setLang(l)} style={{
@@ -271,12 +269,12 @@ export default function Home() {
       {/* HEADER */}
       <div style={{ position: "relative", overflow: "hidden", background: C.ink, padding: "48px 32px 56px", textAlign: "center" }}>
         <svg style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",pointerEvents:"none" }} viewBox="0 0 1200 380" preserveAspectRatio="xMidYMid slice">
-          <ellipse cx="100" cy="80"  rx="200" ry="130" fill={C.orange} opacity="0.18"/>
-          <ellipse cx="320" cy="200" rx="240" ry="150" fill={C.yellow} opacity="0.14"/>
-          <ellipse cx="680" cy="60"  rx="280" ry="160" fill={C.teal}   opacity="0.14"/>
-          <ellipse cx="980" cy="170" rx="220" ry="140" fill={C.blue}   opacity="0.16"/>
-          <ellipse cx="1150" cy="50" rx="160" ry="110" fill={C.green}  opacity="0.14"/>
-          <ellipse cx="500" cy="340" rx="200" ry="80"  fill={C.orange} opacity="0.09"/>
+          <ellipse cx="100"  cy="80"  rx="200" ry="130" fill={C.orange} opacity="0.18"/>
+          <ellipse cx="320"  cy="200" rx="240" ry="150" fill={C.yellow} opacity="0.14"/>
+          <ellipse cx="680"  cy="60"  rx="280" ry="160" fill={C.teal}   opacity="0.14"/>
+          <ellipse cx="980"  cy="170" rx="220" ry="140" fill={C.blue}   opacity="0.16"/>
+          <ellipse cx="1150" cy="50"  rx="160" ry="110" fill={C.green}  opacity="0.14"/>
+          <ellipse cx="500"  cy="340" rx="200" ry="80"  fill={C.orange} opacity="0.09"/>
         </svg>
         <div style={{ position: "relative", zIndex: 1 }}>
           <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(244,169,106,0.18)", border:"1px solid rgba(244,169,106,0.35)", borderRadius:20, padding:"5px 18px", marginBottom:18 }}>
@@ -292,13 +290,13 @@ export default function Home() {
               <div key={i} style={{ width:10,height:10,borderRadius:"50%",background:c,opacity:0.85 }}/>
             ))}
           </div>
+          <div style={{ marginTop:12, fontSize:11, color:"rgba(255,255,255,0.28)", letterSpacing:2, textTransform:"uppercase" }}>{t.partners}</div>
         </div>
       </div>
 
       {/* MAIN */}
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "44px 24px" }}>
 
-        {/* SECTION TITLE */}
         <div style={{ display:"flex", alignItems:"center", gap:16, marginBottom:32 }}>
           <span style={{ fontFamily:"'Playfair Display', serif", fontSize:30, fontWeight:400 }}>{t.auctions}</span>
           <div style={{ flex:1, height:3, borderRadius:3, background:`linear-gradient(90deg,${C.orange},${C.teal},${C.blue},${C.yellow},${C.green},transparent)`, opacity:0.55 }}/>
@@ -314,7 +312,7 @@ export default function Home() {
           </div>
         )}
 
-        {/* LOTS GRID — 3 columns on wide screens */}
+        {/* LOTS GRID */}
         <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(240px,1fr))", gap:20, marginBottom:52 }}>
           {products.map((p, idx) => {
             const acc = cardAccents[idx % cardAccents.length];
@@ -322,16 +320,15 @@ export default function Home() {
             const current = getCurrentAmount(p);
             const isSel = selected?.id === p.id;
             return (
-              <div key={p.id} onClick={() => { setSelected(p); setMsg(null); window.scrollTo({top: 9999, behavior:"smooth"}); }}
+              <div key={p.id} onClick={() => { setSelected(p); setMsg(null); window.scrollTo({ top: 9999, behavior: "smooth" }); }}
                 style={{
                   background: C.white,
                   border: isSel ? `2px solid ${acc.dot}` : `1px solid ${C.border}`,
-                  borderRadius: 16, cursor:"pointer", overflow:"hidden",
-                  transition:"transform .2s, box-shadow .2s",
+                  borderRadius: 16, cursor: "pointer", overflow: "hidden",
+                  transition: "transform .2s, box-shadow .2s",
                   transform: isSel ? "translateY(-4px)" : undefined,
                   boxShadow: isSel ? `0 12px 36px ${acc.dot}55` : "0 2px 10px rgba(0,0,0,0.06)",
                 }}>
-                {/* IMAGE */}
                 <div style={{ height:170, background:acc.bg, display:"flex", alignItems:"center", justifyContent:"center", position:"relative", overflow:"hidden" }}>
                   <svg style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",pointerEvents:"none",opacity:0.45 }} viewBox="0 0 240 170">
                     <ellipse cx="200" cy="25"  rx="75" ry="55" fill={acc.dot} opacity="0.35"/>
@@ -340,21 +337,14 @@ export default function Home() {
                   </svg>
                   {p.image_url && p.image_url.startsWith("http")
                     ? <img src={p.image_url} alt={getName(p)} style={{ width:"100%",height:"100%",objectFit:"cover",position:"absolute",top:0,left:0 }}/>
-                    : <span style={{ fontFamily:"'Playfair Display', serif", fontSize:12, color:acc.badge, position:"relative", zIndex:1, opacity:0.6 }}>📷</span>
+                    : <span style={{ fontFamily:"'Playfair Display', serif", fontSize:24, position:"relative", zIndex:1, opacity:0.4 }}>🎨</span>
                   }
-                  <div style={{
-                    position:"absolute", top:10, left:10, zIndex:2,
-                    background: statusColor(p.status),
-                    color: C.white, fontSize:9, letterSpacing:2, textTransform:"uppercase",
-                    padding:"3px 10px", borderRadius:20, display:"flex", alignItems:"center", gap:5, fontWeight:700
-                  }}>
+                  <div style={{ position:"absolute", top:10, left:10, zIndex:2, background:statusColor(p.status), color:C.white, fontSize:9, letterSpacing:2, textTransform:"uppercase", padding:"3px 10px", borderRadius:20, display:"flex", alignItems:"center", gap:5, fontWeight:700 }}>
                     {p.status==="active" && <span style={{ width:5,height:5,background:C.white,borderRadius:"50%",display:"inline-block" }}/>}
                     {statusLabel(p.status)}
                   </div>
                   {isSel && (
-                    <div style={{ position:"absolute", top:10, right:10, zIndex:2, background:acc.dot, color:C.white, fontSize:9, letterSpacing:1, textTransform:"uppercase", padding:"3px 8px", borderRadius:20, fontWeight:700 }}>
-                      ✓ Seçili
-                    </div>
+                    <div style={{ position:"absolute", top:10, right:10, zIndex:2, background:acc.dot, color:C.white, fontSize:9, letterSpacing:1, textTransform:"uppercase", padding:"3px 8px", borderRadius:20, fontWeight:700 }}>✓ Seçili</div>
                   )}
                 </div>
                 <div style={{ padding:"14px 16px" }}>
@@ -366,9 +356,7 @@ export default function Home() {
                       <div style={{ fontFamily:"'Playfair Display', serif", fontSize:22, color:acc.price, fontWeight:600 }}>₺ {current.toLocaleString()}</div>
                     </div>
                     <div style={{ textAlign:"right" }}>
-                      <div style={{ background:acc.bg, color:acc.badge, fontSize:10, fontWeight:700, padding:"3px 10px", borderRadius:12 }}>
-                        {bids[p.id]?.length || 0} {t.bidCount}
-                      </div>
+                      <div style={{ background:acc.bg, color:acc.badge, fontSize:10, fontWeight:700, padding:"3px 10px", borderRadius:12 }}>{bids[p.id]?.length || 0} {t.bidCount}</div>
                       {topBid && <div style={{ fontSize:10, color:C.inkMuted, marginTop:3 }}>{topBid.bidder_name.split(" ")[0]}</div>}
                     </div>
                   </div>
@@ -387,7 +375,6 @@ export default function Home() {
           <svg style={{ position:"absolute",bottom:0,left:0,width:200,height:200,pointerEvents:"none",opacity:0.12 }} viewBox="0 0 200 200">
             <ellipse cx="50" cy="160" rx="120" ry="90" fill={C.teal}/>
           </svg>
-
           <div style={{ position:"relative", zIndex:1 }}>
             <div style={{ fontFamily:"'Playfair Display', serif", fontSize:24, fontWeight:400, marginBottom:4 }}>
               {selected ? `${t.lot} ${products.indexOf(selected)+1} — ${getName(selected)}` : t.selectLot}
@@ -395,9 +382,7 @@ export default function Home() {
             {selected && getDesc(selected) && (
               <div style={{ fontSize:13, color:C.inkLight, marginBottom:24, lineHeight:1.6 }}>{getDesc(selected)}</div>
             )}
-            {!selected && (
-              <div style={{ color:C.inkMuted, fontSize:13, marginTop:8 }}>👆 {t.selectLot}</div>
-            )}
+            {!selected && <div style={{ color:C.inkMuted, fontSize:13, marginTop:8 }}>👆 {t.selectLot}</div>}
 
             {selected && (
               <>
@@ -409,8 +394,7 @@ export default function Home() {
                   ].map(f => (
                     <div key={f.key} style={{ display:"flex", flexDirection:"column", gap:6 }}>
                       <label style={{ fontSize:11, letterSpacing:1, textTransform:"uppercase", color:C.inkMuted, fontWeight:700 }}>{f.label}</label>
-                      <input
-                        type={f.type} placeholder={f.ph} required
+                      <input type={f.type} placeholder={f.ph} required
                         value={form[f.key as keyof typeof form] as string}
                         onChange={e => setForm(prev => ({ ...prev, [f.key]: e.target.value }))}
                         style={{ background:C.white, border:`1.5px solid ${C.border}`, borderRadius:10, padding:"11px 14px", fontSize:14, fontFamily:"'Nunito', sans-serif", outline:"none", color:C.ink }}
@@ -448,19 +432,11 @@ export default function Home() {
                   color:C.white, border:"none", padding:"14px 44px",
                   fontSize:13, letterSpacing:2, textTransform:"uppercase",
                   cursor: loading ? "not-allowed" : "pointer",
-                  fontFamily:"'Nunito', sans-serif", fontWeight:700, borderRadius:12,
-                  marginTop:8,
-                }}>
-                  {loading ? t.submitting : `${t.submitBid} →`}
-                </button>
+                  fontFamily:"'Nunito', sans-serif", fontWeight:700, borderRadius:12, marginTop:8,
+                }}>{loading ? t.submitting : `${t.submitBid} →`}</button>
 
                 {msg && (
-                  <div style={{
-                    marginTop:16, padding:"12px 18px", borderRadius:10,
-                    background: msg.ok ? C.tealLight : "#FFECEC",
-                    border:`1px solid ${msg.ok ? C.teal : "#F4A0A0"}`,
-                    fontSize:13, color: msg.ok ? C.tealDark : "#C02020", fontWeight:600
-                  }}>{msg.text}</div>
+                  <div style={{ marginTop:16, padding:"12px 18px", borderRadius:10, background: msg.ok ? C.tealLight : "#FFECEC", border:`1px solid ${msg.ok ? C.teal : "#F4A0A0"}`, fontSize:13, color: msg.ok ? C.tealDark : "#C02020", fontWeight:600 }}>{msg.text}</div>
                 )}
               </>
             )}
@@ -477,34 +453,26 @@ export default function Home() {
           <ellipse cx="1000" cy="80"  rx="190" ry="100" fill={C.yellow}/>
           <ellipse cx="1150" cy="200" rx="160" ry="90"  fill={C.green}/>
         </svg>
-
         <div style={{ position:"relative", zIndex:1, maxWidth:900, margin:"0 auto" }}>
-          {/* Erasmus logo + flags row */}
-          <div style={{ display:"flex", justifyContent:"center", alignItems:"center", gap:40, marginBottom:36, flexWrap:"wrap" }}>
-            {/* Erasmus logo */}
-            <div style={{ textAlign:"center" }}>
-              <ErasmusLogo />
-            </div>
-            {/* Divider */}
+
+          {/* Erasmus + bayraklar */}
+          <div style={{ display:"flex", justifyContent:"center", alignItems:"center", gap:48, marginBottom:36, flexWrap:"wrap" }}>
+            <ErasmusLogo />
             <div style={{ width:1, height:80, background:"rgba(255,255,255,0.15)" }}/>
-            {/* Flags */}
-            <div style={{ display:"flex", gap:16, alignItems:"center" }}>
-              <div style={{ textAlign:"center" }}>
-                <FlagTR />
-                <div style={{ fontSize:9, color:"rgba(255,255,255,0.4)", marginTop:4, letterSpacing:1 }}>TÜRKİYE</div>
-              </div>
-              <div style={{ textAlign:"center" }}>
-                <FlagLT />
-                <div style={{ fontSize:9, color:"rgba(255,255,255,0.4)", marginTop:4, letterSpacing:1 }}>LETONYA</div>
-              </div>
-              <div style={{ textAlign:"center" }}>
-                <FlagIT />
-                <div style={{ fontSize:9, color:"rgba(255,255,255,0.4)", marginTop:4, letterSpacing:1 }}>İTALYA</div>
-              </div>
+            <div style={{ display:"flex", gap:20, alignItems:"center" }}>
+              {[
+                { Flag: FlagTR, label: "TÜRKİYE" },
+                { Flag: FlagLT, label: "LİTVANYA" },
+                { Flag: FlagIT, label: "İTALYA" },
+              ].map(({ Flag, label }) => (
+                <div key={label} style={{ textAlign:"center" }}>
+                  <Flag />
+                  <div style={{ fontSize:9, color:"rgba(255,255,255,0.4)", marginTop:5, letterSpacing:1 }}>{label}</div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Text */}
           <div style={{ textAlign:"center" }}>
             <div style={{ fontFamily:"'Playfair Display', serif", fontSize:26, color:C.white, marginBottom:12 }}>C-LINE</div>
             <div style={{ display:"flex", justifyContent:"center", gap:8, marginBottom:20 }}>
