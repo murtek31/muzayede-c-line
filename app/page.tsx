@@ -160,44 +160,28 @@ const ErasmusLogo = () => (
   </svg>
 );
 
-// GERİ SAYIM bileşeni
 function Countdown({ endTime, t }: { endTime: string; t: typeof T.tr }) {
   const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0, ended: false });
-
   const calc = useCallback(() => {
     const diff = new Date(endTime).getTime() - Date.now();
     if (diff <= 0) return { d: 0, h: 0, m: 0, s: 0, ended: true };
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    return { d, h, m, s, ended: false };
+    return { d: Math.floor(diff/86400000), h: Math.floor((diff%86400000)/3600000), m: Math.floor((diff%3600000)/60000), s: Math.floor((diff%60000)/1000), ended: false };
   }, [endTime]);
-
   useEffect(() => {
     setTimeLeft(calc());
     const id = setInterval(() => setTimeLeft(calc()), 1000);
     return () => clearInterval(id);
   }, [calc]);
-
   if (timeLeft.ended) return (
-    <div style={{ background: "#FFECEC", border: "1px solid #F4A0A0", borderRadius: 8, padding: "6px 12px", fontSize: 11, color: "#C02020", fontWeight: 700, textAlign: "center" }}>
-      {t.ended}
-    </div>
+    <div style={{ background:"#FFECEC", border:"1px solid #F4A0A0", borderRadius:8, padding:"6px 12px", fontSize:11, color:"#C02020", fontWeight:700, textAlign:"center" }}>{t.ended}</div>
   );
-
   return (
-    <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
-      <div style={{ fontSize: 9, color: C.inkMuted, textTransform: "uppercase", letterSpacing: 1, marginRight: 2 }}>{t.timeLeft}:</div>
-      {[
-        { v: timeLeft.d, l: t.days },
-        { v: timeLeft.h, l: t.hours },
-        { v: timeLeft.m, l: t.mins },
-        { v: timeLeft.s, l: t.secs },
-      ].map(({ v, l }) => (
-        <div key={l} style={{ background: C.ink, color: C.white, borderRadius: 5, padding: "3px 6px", minWidth: 32, textAlign: "center" }}>
-          <div style={{ fontFamily: "'Playfair Display',serif", fontSize: 14, fontWeight: 600, lineHeight: 1 }}>{String(v).padStart(2, "0")}</div>
-          <div style={{ fontSize: 8, opacity: 0.5, letterSpacing: 1 }}>{l}</div>
+    <div style={{ display:"flex", gap:4, alignItems:"center" }}>
+      <div style={{ fontSize:9, color:C.inkMuted, textTransform:"uppercase", letterSpacing:1, marginRight:2 }}>{t.timeLeft}:</div>
+      {[{v:timeLeft.d,l:t.days},{v:timeLeft.h,l:t.hours},{v:timeLeft.m,l:t.mins},{v:timeLeft.s,l:t.secs}].map(({v,l}) => (
+        <div key={l} style={{ background:C.ink, color:C.white, borderRadius:5, padding:"3px 6px", minWidth:32, textAlign:"center" }}>
+          <div style={{ fontFamily:"'Playfair Display',serif", fontSize:14, fontWeight:600, lineHeight:1 }}>{String(v).padStart(2,"0")}</div>
+          <div style={{ fontSize:8, opacity:0.5, letterSpacing:1 }}>{l}</div>
         </div>
       ))}
     </div>
@@ -209,20 +193,19 @@ export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [bids, setBids] = useState<Record<string, Bid[]>>({});
   const [selected, setSelected] = useState<Product | null>(null);
-  const [form, setForm] = useState({ name: "", phone: "", email: "", amount: "", gdpr: false, notify: true });
+  const [form, setForm] = useState({ name:"", phone:"", email:"", amount:"", gdpr:false, notify:true });
   const [loading, setLoading] = useState(false);
-  const [msg, setMsg] = useState<{ text: string; ok: boolean } | null>(null);
+  const [msg, setMsg] = useState<{ text:string; ok:boolean } | null>(null);
   const t = T[lang];
 
   useEffect(() => { fetchProducts(); }, []);
-
   async function fetchProducts() {
     const { data } = await supabase.from("products").select("*").order("created_at");
     if (data) { setProducts(data); data.forEach((p: Product) => fetchBids(p.id)); }
   }
   async function fetchBids(pid: string) {
-    const { data } = await supabase.from("bids").select("*").eq("product_id", pid).order("amount", { ascending: false });
-    if (data) setBids(prev => ({ ...prev, [pid]: data }));
+    const { data } = await supabase.from("bids").select("*").eq("product_id", pid).order("amount", { ascending:false });
+    if (data) setBids(prev => ({ ...prev, [pid]:data }));
   }
   function getName(p: Product) { return (p[`name_${lang}` as keyof Product] as string) || p.name_tr; }
   function getDesc(p: Product) { return (p[`description_${lang}` as keyof Product] as string) || p.description_tr; }
@@ -231,42 +214,39 @@ export default function Home() {
 
   async function handleSubmit() {
     if (!selected) return;
-    if (!form.name.trim() || !form.phone.trim() || !form.email.trim() || !form.amount) { setMsg({ text: t.fillAll, ok: false }); return; }
-    if (!form.gdpr) { setMsg({ text: t.gdprRequired, ok: false }); return; }
+    if (!form.name.trim() || !form.phone.trim() || !form.email.trim() || !form.amount) { setMsg({ text:t.fillAll, ok:false }); return; }
+    if (!form.gdpr) { setMsg({ text:t.gdprRequired, ok:false }); return; }
     const amt = parseFloat(form.amount);
-    if (amt <= getCurrentAmount(selected)) { setMsg({ text: t.minBidError, ok: false }); return; }
+    if (amt <= getCurrentAmount(selected)) { setMsg({ text:t.minBidError, ok:false }); return; }
     setLoading(true); setMsg(null);
-    const { error } = await supabase.from("bids").insert({
-      product_id: selected.id, bidder_name: form.name.trim(),
-      bidder_phone: form.phone.trim(), bidder_email: form.email.trim(), amount: amt,
-    });
+    const { error } = await supabase.from("bids").insert({ product_id:selected.id, bidder_name:form.name.trim(), bidder_phone:form.phone.trim(), bidder_email:form.email.trim(), amount:amt });
     setLoading(false);
-    if (error) { setMsg({ text: t.errorMsg, ok: false }); }
-    else { setMsg({ text: t.successMsg, ok: true }); setForm({ name: "", phone: "", email: "", amount: "", gdpr: false, notify: true }); fetchBids(selected.id); }
+    if (error) { setMsg({ text:t.errorMsg, ok:false }); }
+    else { setMsg({ text:t.successMsg, ok:true }); setForm({ name:"", phone:"", email:"", amount:"", gdpr:false, notify:true }); fetchBids(selected.id); }
   }
 
-  const statusLabel = (s: string) => s === "active" ? t.status_active : s === "upcoming" ? t.status_upcoming : t.status_closed;
-  const statusColor = (s: string) => s === "active" ? C.teal : s === "upcoming" ? C.blue : "#999";
+  const statusLabel = (s: string) => s==="active" ? t.status_active : s==="upcoming" ? t.status_upcoming : t.status_closed;
+  const statusColor = (s: string) => s==="active" ? C.teal : s==="upcoming" ? C.blue : "#999";
 
   return (
-    <div style={{ fontFamily: "'Nunito',sans-serif", background: C.bg, minHeight: "100vh", color: C.ink }}>
+    <div style={{ fontFamily:"'Nunito',sans-serif", background:C.bg, minHeight:"100vh", color:C.ink }}>
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 
       {/* TOP BAR */}
-      <div style={{ background: C.ink, display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 32px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <div style={{ background:C.ink, display:"flex", justifyContent:"space-between", alignItems:"center", padding:"10px 32px" }}>
+        <div style={{ display:"flex", alignItems:"center", gap:12 }}>
           <FlagTR/><FlagLV/><FlagIT/>
-          <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 1, marginLeft: 4 }}>TR · LV · IT</span>
+          <span style={{ fontSize:10, color:"rgba(255,255,255,0.3)", letterSpacing:1, marginLeft:4 }}>TR · LV · IT</span>
         </div>
-        <div style={{ display: "flex", gap: 6 }}>
+        <div style={{ display:"flex", gap:6 }}>
           {(["tr","en","it","lv"] as Lang[]).map(l => (
-            <button key={l} onClick={() => setLang(l)} style={{ background: lang===l ? C.orange : "transparent", border: "none", cursor: "pointer", color: lang===l ? C.ink : "rgba(255,255,255,0.4)", fontSize: 11, letterSpacing: 2, textTransform: "uppercase", padding: "4px 12px", borderRadius: 20, fontFamily: "'Nunito',sans-serif", fontWeight: 700 }}>{l.toUpperCase()}</button>
+            <button key={l} onClick={() => setLang(l)} style={{ background:lang===l?C.orange:"transparent", border:"none", cursor:"pointer", color:lang===l?C.ink:"rgba(255,255,255,0.4)", fontSize:11, letterSpacing:2, textTransform:"uppercase", padding:"4px 12px", borderRadius:20, fontFamily:"'Nunito',sans-serif", fontWeight:700 }}>{l.toUpperCase()}</button>
           ))}
         </div>
       </div>
 
       {/* HEADER */}
-      <div style={{ position: "relative", overflow: "hidden", background: C.ink, padding: "48px 32px 56px", textAlign: "center" }}>
+      <div style={{ position:"relative", overflow:"hidden", background:C.ink, padding:"48px 32px 56px", textAlign:"center" }}>
         <svg style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",pointerEvents:"none" }} viewBox="0 0 1200 380" preserveAspectRatio="xMidYMid slice">
           <ellipse cx="100" cy="80" rx="200" ry="130" fill={C.orange} opacity="0.18"/>
           <ellipse cx="320" cy="200" rx="240" ry="150" fill={C.yellow} opacity="0.14"/>
@@ -274,7 +254,7 @@ export default function Home() {
           <ellipse cx="980" cy="170" rx="220" ry="140" fill={C.blue} opacity="0.16"/>
           <ellipse cx="1150" cy="50" rx="160" ry="110" fill={C.green} opacity="0.14"/>
         </svg>
-        <div style={{ position: "relative", zIndex: 1 }}>
+        <div style={{ position:"relative", zIndex:1 }}>
           <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(244,169,106,0.18)", border:"1px solid rgba(244,169,106,0.35)", borderRadius:20, padding:"5px 18px", marginBottom:18 }}>
             <span style={{ width:6,height:6,background:C.orange,borderRadius:"50%",display:"inline-block" }}/>
             <span style={{ fontSize:10, letterSpacing:3, color:C.orange, textTransform:"uppercase" }}>Erasmus+ KA210-SCH</span>
@@ -289,14 +269,19 @@ export default function Home() {
       </div>
 
       {/* MAIN */}
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "44px 24px" }}>
+      <div style={{ maxWidth:1100, margin:"0 auto", padding:"44px 24px" }}>
         <div style={{ display:"flex", alignItems:"center", gap:16, marginBottom:32 }}>
           <span style={{ fontFamily:"'Playfair Display',serif", fontSize:30, fontWeight:400 }}>{t.auctions}</span>
           <div style={{ flex:1, height:3, borderRadius:3, background:`linear-gradient(90deg,${C.orange},${C.teal},${C.blue},${C.yellow},${C.green},transparent)`, opacity:0.55 }}/>
           <span style={{ fontSize:10, letterSpacing:2, color:C.inkMuted, textTransform:"uppercase" }}>{products.filter(p=>p.status==="active").length} aktif</span>
         </div>
 
-        {products.length === 0 && <div style={{ textAlign:"center", padding:"60px 0", color:C.inkMuted }}><div style={{ fontSize:40, marginBottom:16 }}>🎨</div><p style={{ fontSize:15 }}>{t.noProducts}</p></div>}
+        {products.length === 0 && (
+          <div style={{ textAlign:"center", padding:"60px 0", color:C.inkMuted }}>
+            <div style={{ fontSize:40, marginBottom:16 }}>🎨</div>
+            <p style={{ fontSize:15 }}>{t.noProducts}</p>
+          </div>
+        )}
 
         <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(240px,1fr))", gap:20, marginBottom:52 }}>
           {products.map((p, idx) => {
@@ -304,9 +289,11 @@ export default function Home() {
             const topBid = getTopBid(p.id);
             const current = getCurrentAmount(p);
             const isSel = selected?.id === p.id;
+            const desc = getDesc(p);
             return (
-              <div key={p.id} onClick={() => { setSelected(p); setMsg(null); window.scrollTo({ top: 9999, behavior: "smooth" }); }}
+              <div key={p.id} onClick={() => { setSelected(p); setMsg(null); window.scrollTo({ top:9999, behavior:"smooth" }); }}
                 style={{ background:C.white, border:isSel?`2px solid ${acc.dot}`:`1px solid ${C.border}`, borderRadius:16, cursor:"pointer", overflow:"hidden", transition:"transform .2s,box-shadow .2s", transform:isSel?"translateY(-4px)":undefined, boxShadow:isSel?`0 12px 36px ${acc.dot}55`:"0 2px 10px rgba(0,0,0,0.06)" }}>
+                {/* GÖRSEL */}
                 <div style={{ height:170, background:acc.bg, display:"flex", alignItems:"center", justifyContent:"center", position:"relative", overflow:"hidden" }}>
                   <svg style={{ position:"absolute",top:0,left:0,width:"100%",height:"100%",pointerEvents:"none",opacity:0.45 }} viewBox="0 0 240 170">
                     <ellipse cx="200" cy="25" rx="75" ry="55" fill={acc.dot} opacity="0.35"/>
@@ -322,16 +309,27 @@ export default function Home() {
                   </div>
                   {isSel && <div style={{ position:"absolute",top:10,right:10,zIndex:2,background:acc.dot,color:C.white,fontSize:9,letterSpacing:1,textTransform:"uppercase",padding:"3px 8px",borderRadius:20,fontWeight:700 }}>✓ Seçili</div>}
                 </div>
+
+                {/* KART İÇERİĞİ */}
                 <div style={{ padding:"14px 16px" }}>
                   <div style={{ fontSize:10,letterSpacing:2,color:C.inkMuted,textTransform:"uppercase",marginBottom:3 }}>{t.lot} {idx+1}</div>
-                  <div style={{ fontFamily:"'Playfair Display',serif", fontSize:18, marginBottom:8, lineHeight:1.3 }}>{getName(p)}</div>
-                  {/* GERİ SAYIM */}
-                  {p.end_time && p.status === "active" && (
-                    <div style={{ marginBottom:10 }}><Countdown endTime={p.end_time} t={t}/></div>
+                  <div style={{ fontFamily:"'Playfair Display',serif", fontSize:18, marginBottom:6, lineHeight:1.3 }}>{getName(p)}</div>
+
+                  {/* AÇIKLAMA — yeni eklenen kısım */}
+                  {desc && (
+                    <div style={{ fontSize:12, color:C.inkLight, lineHeight:1.55, marginBottom:8, display:"-webkit-box", WebkitLineClamp:2, WebkitBoxOrient:"vertical", overflow:"hidden" } as React.CSSProperties}>
+                      {desc}
+                    </div>
                   )}
-                  {!p.end_time && p.status === "active" && (
+
+                  {/* GERİ SAYIM */}
+                  {p.end_time && p.status==="active" && (
+                    <div style={{ marginBottom:8 }}><Countdown endTime={p.end_time} t={t}/></div>
+                  )}
+                  {!p.end_time && p.status==="active" && (
                     <div style={{ fontSize:10, color:C.inkMuted, marginBottom:8 }}>⏳ {t.noTimer}</div>
                   )}
+
                   <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", borderTop:`1px solid ${C.border}`, paddingTop:10 }}>
                     <div>
                       <div style={{ fontSize:9,letterSpacing:1,color:C.inkMuted,textTransform:"uppercase",marginBottom:2 }}>{t.currentBid}</div>
