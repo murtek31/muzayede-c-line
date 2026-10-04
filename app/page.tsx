@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { createClient } from "@supabase/supabase-js";
 
 const SUPABASE_URL = "https://amirimendwikcrhxhrbg.supabase.co";
@@ -28,6 +28,8 @@ const T = {
     required: "* zorunlu alan", partners: "Türkiye · Letonya · İtalya",
     timeLeft: "Kalan Süre", days: "gün", hours: "sa", mins: "dk", secs: "sn",
     ended: "Artırma Sona Erdi", noTimer: "Süresiz",
+    zoomIn: "Yakınlaştır", zoomOut: "Uzaklaştır", zoomReset: "Sıfırla", fullscreen: "Tam ekran", closeFs: "Kapat",
+    zoomHint: "Tekerlek / çift tık / iki parmak",
   },
   en: {
     title: "C-LINE Auction House", auctions: "Live Auctions",
@@ -50,6 +52,8 @@ const T = {
     required: "* required field", partners: "Turkey · Latvia · Italy",
     timeLeft: "Time Left", days: "d", hours: "h", mins: "m", secs: "s",
     ended: "Auction Ended", noTimer: "Open",
+    zoomIn: "Zoom in", zoomOut: "Zoom out", zoomReset: "Reset", fullscreen: "Fullscreen", closeFs: "Close",
+    zoomHint: "Wheel / double-click / pinch",
   },
   it: {
     title: "C-LINE Casa d'Aste", auctions: "Aste in Corso",
@@ -72,6 +76,8 @@ const T = {
     required: "* campo obbligatorio", partners: "Turchia · Lettonia · Italia",
     timeLeft: "Tempo Rimasto", days: "g", hours: "h", mins: "m", secs: "s",
     ended: "Asta Terminata", noTimer: "Aperto",
+    zoomIn: "Ingrandisci", zoomOut: "Riduci", zoomReset: "Reimposta", fullscreen: "Schermo intero", closeFs: "Chiudi",
+    zoomHint: "Rotella / doppio clic / pizzico",
   },
   lv: {
     title: "C-LINE Izsoļu Nams", auctions: "Aktīvās Izsoles",
@@ -94,6 +100,8 @@ const T = {
     required: "* obligāts lauks", partners: "Turcija · Latvija · Itālija",
     timeLeft: "Atlikušais Laiks", days: "d", hours: "h", mins: "min", secs: "s",
     ended: "Izsole Beigusies", noTimer: "Atvērts",
+    zoomIn: "Pietuvināt", zoomOut: "Attālināt", zoomReset: "Atiestatīt", fullscreen: "Pilnekrāna režīms", closeFs: "Aizvērt",
+    zoomHint: "Ritenis / dubultklikšķis / divi pirksti",
   },
 };
 
@@ -159,6 +167,173 @@ const ErasmusLogo = () => (
     <text x="60" y="70" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="14" fontWeight="bold" fill="#003399">Erasmus+</text>
   </svg>
 );
+
+/* ───────────── ZOOM / İNCELEME BİLEŞENİ ───────────── */
+const ZOOM_MIN = 1;
+const ZOOM_MAX = 6;
+
+function ZoomViewer({
+  src, alt, height, accent, t, isFull, onToggleFull,
+}: {
+  src: string; alt: string; height: number | string; accent: string;
+  t: typeof T.tr; isFull: boolean; onToggleFull: () => void;
+}) {
+  const boxRef = useRef<HTMLDivElement>(null);
+  const [view, setView] = useState({ s: 1, x: 0, y: 0 });
+  const [active, setActive] = useState(false);
+  const pointers = useRef<Map<number, { x: number; y: number }>>(new Map());
+  const lastPinch = useRef<number | null>(null);
+
+  const clamp = useCallback((s: number, x: number, y: number) => {
+    const el = boxRef.current;
+    if (!el) return { s, x, y };
+    const limX = ((s - 1) * el.clientWidth) / 2;
+    const limY = ((s - 1) * el.clientHeight) / 2;
+    return { s, x: Math.max(-limX, Math.min(limX, x)), y: Math.max(-limY, Math.min(limY, y)) };
+  }, []);
+
+  const zoomAt = useCallback((factor: number, cx?: number, cy?: number) => {
+    const el = boxRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const px = (cx ?? rect.left + rect.width / 2) - (rect.left + rect.width / 2);
+    const py = (cy ?? rect.top + rect.height / 2) - (rect.top + rect.height / 2);
+    setView(v => {
+      const ns = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, v.s * factor));
+      if (ns === v.s) return v;
+      const k = ns / v.s;
+      return clamp(ns, px - (px - v.x) * k, py - (py - v.y) * k);
+    });
+  }, [clamp]);
+
+  const reset = () => setView({ s: 1, x: 0, y: 0 });
+
+  // Yeni görsele geçince sıfırla
+  useEffect(() => { setView({ s: 1, x: 0, y: 0 }); }, [src]);
+
+  // Fare tekerleği (sayfa kaymasın diye passive:false)
+  useEffect(() => {
+    const el = boxRef.current;
+    if (!el) return;
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      zoomAt(e.deltaY < 0 ? 1.2 : 1 / 1.2, e.clientX, e.clientY);
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, [zoomAt]);
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    lastPinch.current = null;
+    setActive(true);
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    const prev = pointers.current.get(e.pointerId);
+    if (!prev) return;
+    pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const pts = Array.from(pointers.current.values());
+    if (pts.length === 2) {
+      const d = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+      if (lastPinch.current) zoomAt(d / lastPinch.current, (pts[0].x + pts[1].x) / 2, (pts[0].y + pts[1].y) / 2);
+      lastPinch.current = d;
+    } else if (pts.length === 1) {
+      const dx = e.clientX - prev.x, dy = e.clientY - prev.y;
+      setView(v => (v.s > 1 ? clamp(v.s, v.x + dx, v.y + dy) : v));
+    }
+  };
+  const onPointerUp = (e: React.PointerEvent) => {
+    pointers.current.delete(e.pointerId);
+    lastPinch.current = null;
+    if (pointers.current.size === 0) setActive(false);
+  };
+  const onDoubleClick = (e: React.MouseEvent) => {
+    if (view.s > 1) reset(); else zoomAt(2.5, e.clientX, e.clientY);
+  };
+
+  const btn: React.CSSProperties = {
+    width: 36, height: 36, borderRadius: 10, border: "none", cursor: "pointer",
+    background: "rgba(45,36,24,0.82)", color: "#fff", fontSize: 18, fontWeight: 700,
+    display: "flex", alignItems: "center", justifyContent: "center", lineHeight: 1, padding: 0,
+  };
+
+  return (
+    <div
+      ref={boxRef}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
+      onDoubleClick={onDoubleClick}
+      style={{
+        position: "relative", overflow: "hidden", width: "100%", height,
+        background: "#1a140c", borderRadius: isFull ? 0 : 14,
+        touchAction: "none", userSelect: "none",
+        cursor: view.s > 1 ? (active ? "grabbing" : "grab") : "zoom-in",
+      }}
+    >
+      <img
+        src={src} alt={alt} draggable={false}
+        style={{
+          width: "100%", height: "100%", objectFit: "contain", display: "block",
+          transform: `translate(${view.x}px, ${view.y}px) scale(${view.s})`,
+          transition: active ? "none" : "transform .15s ease-out",
+          willChange: "transform",
+        }}
+      />
+
+      <div
+        onPointerDown={e => e.stopPropagation()}
+        onDoubleClick={e => e.stopPropagation()}
+        style={{ position: "absolute", right: 10, bottom: 10, display: "flex", gap: 6, alignItems: "center" }}
+      >
+        <div style={{ background: "rgba(45,36,24,0.82)", color: "#fff", fontSize: 12, fontWeight: 700, padding: "0 10px", height: 36, borderRadius: 10, display: "flex", alignItems: "center" }}>
+          {Math.round(view.s * 100)}%
+        </div>
+        <button type="button" aria-label={t.zoomOut} title={t.zoomOut} style={btn} onClick={() => zoomAt(1 / 1.4)} disabled={view.s <= ZOOM_MIN}>−</button>
+        <button type="button" aria-label={t.zoomIn} title={t.zoomIn} style={{ ...btn, background: accent }} onClick={() => zoomAt(1.4)} disabled={view.s >= ZOOM_MAX}>+</button>
+        <button type="button" aria-label={t.zoomReset} title={t.zoomReset} style={{ ...btn, fontSize: 14 }} onClick={reset}>⟲</button>
+        <button type="button" aria-label={isFull ? t.closeFs : t.fullscreen} title={isFull ? t.closeFs : t.fullscreen} style={{ ...btn, fontSize: 16 }} onClick={onToggleFull}>
+          {isFull ? "✕" : "⛶"}
+        </button>
+      </div>
+
+      {view.s === 1 && (
+        <div style={{ position: "absolute", left: 10, top: 10, background: "rgba(45,36,24,0.7)", color: "rgba(255,255,255,0.85)", fontSize: 11, padding: "4px 10px", borderRadius: 20, pointerEvents: "none" }}>
+          🔍 {t.zoomHint}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ZoomableImage({ src, alt, accent, t, height = 340 }: {
+  src: string; alt: string; accent: string; t: typeof T.tr; height?: number;
+}) {
+  const [full, setFull] = useState(false);
+
+  useEffect(() => {
+    if (!full) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setFull(false); };
+    window.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = prev; };
+  }, [full]);
+
+  return (
+    <>
+      <ZoomViewer src={src} alt={alt} height={height} accent={accent} t={t} isFull={false} onToggleFull={() => setFull(true)} />
+      {full && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 1000, background: "#000" }}>
+          <ZoomViewer src={src} alt={alt} height="100%" accent={accent} t={t} isFull onToggleFull={() => setFull(false)} />
+        </div>
+      )}
+    </>
+  );
+}
+/* ───────────── /ZOOM BİLEŞENİ ───────────── */
 
 function Countdown({ endTime, t }: { endTime: string; t: typeof T.tr }) {
   const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0, ended: false });
@@ -315,7 +490,6 @@ export default function Home() {
                   <div style={{ fontSize:10,letterSpacing:2,color:C.inkMuted,textTransform:"uppercase",marginBottom:3 }}>{t.lot} {idx+1}</div>
                   <div style={{ fontFamily:"'Playfair Display',serif", fontSize:18, marginBottom:6, lineHeight:1.3 }}>{getName(p)}</div>
 
-                  {/* AÇIKLAMA — yeni eklenen kısım */}
                   {desc && (
                     <div style={{ fontSize:12, color:C.inkLight, lineHeight:1.55, marginBottom:8, display:"-webkit-box", WebkitLineClamp:2, WebkitBoxOrient:"vertical", overflow:"hidden" } as React.CSSProperties}>
                       {desc}
@@ -359,6 +533,20 @@ export default function Home() {
             <div style={{ fontFamily:"'Playfair Display',serif", fontSize:24, fontWeight:400, marginBottom:4 }}>
               {selected ? `${t.lot} ${products.indexOf(selected)+1} — ${getName(selected)}` : t.selectLot}
             </div>
+
+            {/* ÜRÜN GÖRSELİ — yakınlaştır / uzaklaştır / incele */}
+            {selected && selected.image_url && selected.image_url.startsWith("http") && (
+              <div style={{ margin:"16px 0 20px" }}>
+                <ZoomableImage
+                  src={selected.image_url}
+                  alt={getName(selected)}
+                  accent={cardAccents[products.indexOf(selected) % cardAccents.length].dot}
+                  t={t}
+                  height={340}
+                />
+              </div>
+            )}
+
             {selected && getDesc(selected) && <div style={{ fontSize:13,color:C.inkLight,marginBottom:24,lineHeight:1.6 }}>{getDesc(selected)}</div>}
             {!selected && <div style={{ color:C.inkMuted,fontSize:13,marginTop:8 }}>👆 {t.selectLot}</div>}
             {selected && (
